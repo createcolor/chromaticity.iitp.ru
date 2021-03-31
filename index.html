@@ -1,0 +1,807 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>2nd International Illumination Estimation Challenge</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+  <link rel="stylesheet" href="pricing.css">
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+  <!--<![endif]-->
+  <style>
+    .styledimage {
+      margin:54px 0;
+      width: 800px;
+      height: 401px;
+      background-image: url(dataset.jpg);
+      text-align: center;
+      font-size: 40px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 401px;
+      border-radius: 25px;
+      color:white;
+      box-shadow:
+        5px 5px 15px 5px #FF8080,
+        -9px 5px 15px 5px #FFE488,
+        -7px -5px 15px 5px #8CFF85,
+        12px -5px 15px 5px #80C7FF,
+        12px 10px 15px 7px #E488FF,
+        -10px 10px 15px 7px #FF616B,
+        -10px -7px 27px 1px #8E5CFF,
+        5px 5px 15px 5px rgba(0,0,0,0);
+      text-shadow: 0px 0px 19px #19CEAE;
+    }
+    #dataset_img {
+      width: 800px;
+      height: 401px;
+      background-image: url(dataset.jpg);
+    }
+    #source_img {
+      width: 778px;
+      height: 518px;
+      background-image: url(2_light_sources.jpg);
+    }
+    #team div {
+      margin-bottom: 0.75em;
+    }
+    #team div {
+      margin-bottom: 0.75em;
+    }
+    #team div div {
+      background-image: url(organizers.jpg);
+      margin: 0 0.5em 0 auto;
+      width: 128px;
+      height: 128px;
+      border-radius: 10%;
+    }
+    .banich { background-position-x: 0px; }
+    .arseniy { background-position-x: -128px; }
+    .dpn { background-position-x: -256px; }
+    .ershov { background-position-x: -384px; }
+    .marko { background-position-x: -512px; }
+    .savchik { background-position-x: -640px; }
+    .sven { background-position-x: -768px; }
+    .ilya { background-position-x: -896px; }
+    .daria { background-position-x: -1024px; }
+    .alexander { background-position-x: -1152px; }
+    .artem { background-position-x: -1280px; }
+
+    .sponsor {
+      background-image: url(sponsors.png);
+      margin: 0 auto 0.5em auto;
+      height: 126px;
+      display: block;
+    }
+    .visillect {
+      width: 382px;
+      background-position-x: -250px;
+    }
+    .iitp {
+      width: 253px;
+    }
+
+    .out-of-the-competition {
+      background: #fff8dc; /* Цвет фона четных строк */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <h1 class="banner-head">
+      <small>Kharkevich Institute for Information Transmission Problems</small><br>
+      2nd International Illumination Estimation Challenge
+    </h1>
+  </div>
+  <div class="content">
+    <h1>About the challenge</h1>
+
+    <p>Institute for Information Transmission Problems of the Russian Academy of
+    Sciences (Kharkevich Institute or IITP RAS), in cooperation with University of
+    Zagreb, invites research groups and individual enthusiasts to participate in
+    the 2nd International Illumination Estimation Challenge (IEC).</p>
+
+    <p>The main goal of the challenge in this year is to develop novel algorithms for
+    estimation of multiple light sources scene illumination and demonstrate its
+    effectiveness using large and diverse image dataset.<p>
+
+    <p>This year IEC event will supplement the regular program of the 13th
+    International Conference on Machine Vision (ICMV 2020, November 02-06, 2020,
+    Rome, Italy), which bring together leading experts in computer vision
+    and image processing. First IEC competition was held during 11th
+    International Symposium on Image and Signal Processing and Analysis
+    (ISPA 2019, September 23-25, 2019, Dubrovnik, Croatia)
+    <a href="https://www.isispa.org/illumination-estimation-challenge">
+      https://www.isispa.org/illumination-estimation-challenge</a>.</p>
+
+    <p>We’d appreciate your help in attracting research teams to the participation in the challenge by placing an announce of the IEC on your site.</p>
+
+    <h1>Significance of the Challenge</h1>
+
+    <p>The importance of scene illumination estimation has increased
+      significantly, i.e. most mobile phones, tablets and laptops began to be
+      equipped with cameras. Each of these devices performs color correction
+      based on the estimated scene illumination when shooting an image or
+      video. This is the essential part of the color image formation pipeline
+      in modern mobile devices. </p>
+
+    <p>Human color perception system has a color constancy feature providing
+      object coloration recognition regardless of the scene illumination.
+      Auto white balance (AWB) is an analogous feature in the world of digital
+      cameras. Important step here is the illumination estimation problem.
+      To solve the problem one needs a good algorithm and high quality
+      dataset of images to evaluate the algorithm results. To date, thousands
+      of scientific papers have been written on this problem, but we still
+      can’t say it is solved. Why?</p>
+
+    <p>First, because the volumes of open scientific datasets are not large
+      enough and do not fully cover various cases of illumination.</p>
+
+    <p>Second, because images in existing datasets are labeled indicating
+      ground-truth scene illumination, but lack information about the scene
+      content. This is important for a deeper study of the problem and
+      dividing it into subtasks. Perhaps, scene illumination color estimation
+      during the day, at night, in nature, in the city should be performed in
+      various ways, which requires study.</p>
+
+    <p>Third, because up to now the problem of illumination parameters
+      estimation was solved in an oversimplified formulation: the evaluation
+      of a single dominant light source (and, accordingly, there are very
+      few publicly available datasets with multiple light sources). On the
+      one hand, single light source assumption is true for images taken on a
+      cloudy day, or in a room with a single lamp, on the other hand - this
+      assumption is not valid on a sunny day when there are two light sources:
+      the sun and the sky. And at night on the street, or in a closed room,
+      this assumption is far from reality.</p>
+
+    <div id="source_img" class=""></div>
+
+    <p>The goal of IEC is to take a step towards overcoming these three
+      obstacles. To do this, we collected the world's largest dataset
+      (about 5,000 images) captured on cameras with the same sensor
+      (Canon 600D and Canon 550D), and labeled each image with metadata.
+      This metadata contains estimates of the two light sources in the
+      scene (ground-truth) and additional information on the scene content.</p>
+
+    <div id="dataset_img" class="styledimage"></div>
+
+
+    <h1><a name="Leaderboard" id="Leaderboard">Leaderboard</a></h1>
+    <h2><a name="Leaderboard-General" id="Leaderboard-General">General track</a></h2>
+    <table class="pure-table">
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Mean (worst&nbsp;25%)</th>
+          <th>Mean</th>
+          <th>Median</th>
+          <th>Trimean</th>
+          <th>Team</th>
+          <th>Pastebin link</th>
+          <th>Prize</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>CAUnet</td>
+          <td>4.084077</td>
+          <td>1.605</td>
+          <td>0.966</td>
+          <td>1.084</td>
+          <td>Zhihao Li<br>(Nanjing&nbsp;University)</td>
+          <td><a href="https://pastebin.com/kHb4GCeH">kHb4GCeH</a></td>
+          <td>1st</td>
+        </tr>
+        <tr>
+          <td>CAUnet</td>
+          <td>4.321251</td>
+          <td>1.725</td>
+          <td>1.084</td>
+          <td>1.207</td>
+          <td>Zhihao Li<br>(Nanjing&nbsp;University)</td>
+          <td><a href="https://pastebin.com/m0SfbmKw">m0SfbmKw</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>4.419051</td>
+          <td>1.822</td>
+          <td>1.197</td>
+          <td>1.317</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng(Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/G1VQ3QDr">G1VQ3QDr</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>4.656795</td>
+          <td>1.891</td>
+          <td>1.230</td>
+          <td>1.352</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng (Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/7j0xGHLz">7j0xGHLz</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>sde-awb</td>
+          <td>4.979334</td>
+          <td>1.914</td>
+          <td>1.164</td>
+          <td>1.269</td>
+          <td>Yanlin Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/CNV6MLmi">CNV6MLmi</a></td>
+          <td>2nd</td>
+        </tr>
+        <tr>
+          <td>sde-awb</td>
+          <td>5.112188</td>
+          <td>1.952</td>
+          <td>1.149</td>
+          <td>1.292</td>
+          <td>Yanlin Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/Rq1CnueD">Rq1CnueD</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>sde-awb</td>
+          <td>5.377026</td>
+          <td>2.034</td>
+          <td>1.150</td>
+          <td>1.282</td>
+          <td>Yanlin Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/6By3tqFL">6By3tqFL</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>illumGAN<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>9.999407</td>
+          <td>4.643</td>
+          <td>3.588</td>
+          <td>3.841</td>
+          <td>Jianhui&nbsp;Qiu, Shaobing&nbsp;Gao, Rui&nbsp;Yang, Qinyi&nbsp;Jiang (College&nbsp;of&nbsp;Computer&nbsp;Science,&nbsp;SCU)</td>
+          <td><a href="https://pastebin.com/UDKTdpGe">UDKTdpGe</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>GreyWorld baseline</td>
+          <td>10.419472</td>
+          <td>4.500</td>
+          <td>3.319</td>
+          <td>3.611</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Const baseline</td>
+          <td>17.023748</td>
+          <td>7.081</td>
+          <td>4.020</td>
+          <td>5.275</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>illGAN1.0</td>
+          <td>25.954709</td>
+          <td>19.325</td>
+          <td>18.278</td>
+          <td>18.499</td>
+          <td>Jianhui&nbsp;Qiu, Shaobing&nbsp;Gao, Rui&nbsp;Yang, Qinyi&nbsp;Jiang (College&nbsp;of&nbsp;Computer&nbsp;Science,&nbsp;SCU)</td>
+          <td><a href="https://pastebin.com/izLazHJN">izLazHJN</a></td>
+          <td>3rd</td>
+        </tr>
+        <tr>
+          <td>illGAN1.0</td>
+          <td>26.058358</td>
+          <td>19.360</td>
+          <td>18.328</td>
+          <td>18.498</td>
+          <td>Jianhui&nbsp;Qiu, Shaobing&nbsp;Gao, Rui&nbsp;Yang, Qinyi&nbsp;Jiang (College&nbsp;of&nbsp;Computer&nbsp;Science,&nbsp;SCU)</td>
+          <td><a href="https://pastebin.com/vppsZq0V">vppsZq0V</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>illGAN1.0</td>
+          <td>26.459121</td>
+          <td>19.408</td>
+          <td>18.468</td>
+          <td>18.710</td>
+          <td>Jianhui&nbsp;Qiu, Shaobing&nbsp;Gao, Rui&nbsp;Yang, Qinyi&nbsp;Jiang (College&nbsp;of&nbsp;Computer&nbsp;Science,&nbsp;SCU)</td>
+          <td><a href="https://pastebin.com/QB20MZLm">QB20MZLm</a></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2><a name="Leaderboard-Indoor" id="Leaderboard-Indoor">Indoor track</a></h2>
+    <table class="pure-table">
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Mean</th>
+          <th>Median</th>
+          <th>Trimean</th>
+          <th>Team</th>
+          <th>Pastebin link</th>
+          <th>Prize</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>2.500120</td>
+          <td>2.293</td>
+          <td>2.201</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng(Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/FZa90iH2">FZa90iH2</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>sde-awb</td>
+          <td>2.541370</td>
+          <td>1.763</td>
+          <td>1.943</td>
+          <td>Yanlin&nbsp;Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/z7L4ccwY">z7L4ccwY</a></td>
+          <td>1st</td>
+        </tr>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>2.855412</td>
+          <td>2.293</td>
+          <td>2.407</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng (Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/5UT3YUs3">5UT3YUs3</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>illumGAN<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>3.191023</td>
+          <td>2.596</td>
+          <td>2.674</td>
+          <td>Jianhui Qiu, Shaobing Gao, <br>Rui Yang, Qinyi Jiang <br>(College of Computer Science, SCU)</td>
+          <td><a href="https://pastebin.com/kkK1kgdL">kkK1kgdL</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>PCGAN, MCGAN</td>
+          <td>3.301088</td>
+          <td>2.312</td>
+          <td>2.298</td>
+          <td>Riccardo&nbsp;Riva, Marco&nbsp;Buzzelli, Simone&nbsp;Bianco, Raimondo&nbsp;Schettini (Imaging&nbsp;and&nbsp;Vision&nbsp;Laboratory, University&nbsp;of&nbsp;Milan&nbsp;-&nbsp;Bicocca)</td>
+          <td><a href="https://pastebin.com/XMy5NHzY">XMy5NHzY</a></td>
+          <td>2nd</td>
+        </tr>
+        <tr>
+          <td>PCGAN, MCGAN</td>
+          <td>3.376422</td>
+          <td>2.312</td>
+          <td>2.337</td>
+          <td>Riccardo&nbsp;Riva, Marco&nbsp;Buzzelli, Simone&nbsp;Bianco, Raimondo&nbsp;Schettini (Imaging&nbsp;and&nbsp;Vision&nbsp;Laboratory, University&nbsp;of&nbsp;Milan&nbsp;-&nbsp;Bicocca)</td>
+          <td><a href="https://pastebin.com/fYAyFsam">fYAyFsam</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>GreyWorld baseline</td>
+          <td>4.105811</td>
+          <td>3.673</td>
+          <td>3.545</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Const baseline</td>
+          <td>15.269933</td>
+          <td>14.802</td>
+          <td>15.332</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <h2><a name="Leaderboard-Two-illuminant" id="Leaderboard-Two-illuminant">Two-illuminant track</a></h2>
+    <table class="pure-table">
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Mean squared</th>
+          <th>Mean</th>
+          <th>Median</th>
+          <th>Trimean</th>
+          <th>Team</th>
+          <th>Pastebin link</th>
+          <th>Prize</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>sde-awb</td>
+          <td>31.026217</td>
+          <td>2.751</td>
+          <td>2.262</td>
+          <td>2.290</td>
+          <td>Yanlin&nbsp;Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/5sbE4xMF">5sbE4xMF</a></td>
+          <td>1st</td>
+        </tr>
+        <tr>
+          <td>sde-awb</td>
+          <td>31.542930</td>
+          <td>2.737</td>
+          <td>2.171</td>
+          <td>2.309</td>
+          <td>Yanlin&nbsp;Qian<br>(Huawei&nbsp;MultiMedia&nbsp;Team)</td>
+          <td><a href="https://pastebin.com/FK19nsTb">FK19nsTb</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>33.079119</td>
+          <td>2.657</td>
+          <td>1.844</td>
+          <td>2.082</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng(Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/ZLVkhPUp">ZLVkhPUp</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>3du-awb<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>37.305135</td>
+          <td>2.863</td>
+          <td>2.503</td>
+          <td>2.497</td>
+          <td>Yang&nbsp;Liu,&nbsp;Masoumeh&nbsp;Bakhtiariziabari, Gaurav&nbsp;Kudva,&nbsp;Sezer&nbsp;Karaoglu<br>(3DUniversum)<br>Theo&nbsp;Gevers<br>(3DUniversum/University&nbsp;of&nbsp;Amsterdam)</td>
+          <td><a href="https://pastebin.com/YrMDaGBx">YrMDaGBx</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>AL-AWB<a href='#footnoteResolver1' id='footnote1'><sup>*</sup></a></td>
+          <td>41.883269</td>
+          <td>2.920</td>
+          <td>2.107</td>
+          <td>2.316</td>
+          <td>Xiaoyan Xing (Huawei Media Technology Institute, Tsinghua University), Sibo Feng (Huawei Media Technology Institute), Yanlin Qian (Huawei MultiMedia Team)</td>
+          <td><a href="https://pastebin.com/AU2dBhZP">AU2dBhZP</a></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>GreyWorld baseline</td>
+          <td>81.840743</td>
+          <td>4.127</td>
+          <td>3.538</td>
+          <td>3.715</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Const baseline</td>
+          <td>144.745182</td>
+          <td>5.264</td>
+          <td>3.475</td>
+          <td>3.815</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href='#footnote1' id='footnoteResolver1'>*</a> -- out of the competition (after the July 31). 
+
+    <h1>Rules for participation</h1>
+
+    <p>
+      <b>UPDATE.</b> The train dataset will be published soon
+    </p>
+
+    <p> Registration is open till 13:00 July 31 (GMT+3), 2020. To register, please send an email
+      to <a href="mailto:chroma@iitp.ru">chroma@iitp.ru</a> indicating the
+      team members and their affiliations.
+    </p>
+
+    <p>Challenge consist of three tracks:
+      <ul>
+        <li>General case</li>
+        <li>Two-illuminant case</li>
+        <li>Indoor case</li>
+      </ul>
+
+      For each track we have prepared corresponding dataset and metric for final ranking. 
+      The metrics code is available on the <a href="https://github.com/Visillect/CubePlusPlus">github</a>.
+      Details are provided in the following section. The key from the test part of the
+      dataset is published below.
+    </p>
+
+    <h2> Submission </h2>
+    <p>
+      The submission form is available <a href="https://docs.google.com/forms/d/e/1FAIpQLScNJp19c0ZJpR6sB-JOfexfJi08XyO5a_sQUlDsOpi8h15HJw/viewform?usp=pp_url&entry.1506871634=Author1+(Affiliation1),+Author2+(Affiliation2),+...&entry.168367601=https://pastebin.com/ZZZZZZ1,+https://pastebin.com/ZZZZZZZ2+https://pastebin.com/ZZZZZZ3&entry.107285849=https://pastebin.com/ZZZZZZ4,+https://pastebin.com/ZZZZZZZ5&entry.1802274419=https://pastebin.com/ZZZZZZZ6">HERE</a>.
+      You will be able to submit your solution till 13:00 July 31 (GMT+3). In the form you are required to:
+      <ul>
+        <li>provide contact email address</li>
+        <li>list all authors and their affiliations in a free form</li>
+        <li>specify a nickname and a brief description of your method</li>
+        <li>provide the Pastebin URLs where you have pasted your results</li>
+      </ul>
+      You are expected to use <a href="https://pastebin.com/">Pastebin</a> (with the <i>Paste Exposure</i> parameter set to the <i>Unlisted</i> value) to store your illumination estimations and provide links to them in the submission form. 
+      The predictions for the test data should be in a CSV format, like <a href="https://github.com/Visillect/CubePlusPlus/tree/master/challenge/test/const_baseline">const</a> or <a href="https://github.com/Visillect/CubePlusPlus/tree/master/challenge/test/grey_world_baseline">GreyWorld</a> baselines.
+      They will be checked with a code similar to <a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">this</a>.
+      Submissions under serious suspicion of dishonorable conduct will not be taken into account.
+    </p>
+
+    <p>
+      Each team can submit up to 3 solutions for each track. They can be sent in a single Google Form submission or split to up to 9 submissions with various algorithm names and participant lists.      
+      The results will be published on August 2nd. As the alternative, you may send email to <a href="mailto:chroma@iitp.ru">chroma@iitp.ru</a> with answers till the same deadline, 
+      but we highly recommend using the submission form. 
+    </p>
+
+    <h1>Detailed tracks description</h1>
+
+    For the challenge we have prepared new dataset, which is essentially extention of the CubePlus dataset. It will be published soon. 
+
+    <h2>General track</h2>
+
+    <p>To date, many algorithms for evaluating lighting in the scene have been developed and successfully used.
+      In solving this problem, the key role is played by the representativeness and variability of the dataset.
+      These requirements impose restrictions on their size; it must be large.
+      This will allow you to create stable solutions by analyzing system errors in various categories of images.</p>
+
+    <p>At first glance, a good solution is to combine the existing datasets into a single large dataset.
+      However, in this case, it is difficult to distinguish which particular factor influences the behavior of the algorithm:
+      the difficulty of the scene or the difference in camera sensitivity.</p>
+
+    <p>Another way to overcome this limitation is to collect a large dataset using the same sensor.
+      To conduct this competition, we went exactly the second way and prepared for the participants
+      of the competition a dataset assembled using one sensor.
+      To analyze the operation of the algorithm, we supplied the images with markup files,
+      which contain not only information about the lighting and shooting parameters,
+      but also information about the contents of the scene.</p>
+
+    <p>In the competition of last year, the median was used as the ranking metric.
+      This is a good metric that allows you to ignore dataset layout errors and periodic malfunctions in the algorithm.
+      This year, however, the main goal of this track is to create a <b>reliable solution</b>, the behavior of which,
+      even in extreme cases, is not bad.</p>
+
+    <p>Therefore, to assess the quality of the proposed solutions, we will use the average 
+      <a href="https://ieeexplore.ieee.org/abstract/document/7494650">reproduction error</a>
+      for 25% of the worst images 
+      (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
+    </p>
+
+
+    <h2>Indoor track</h2>
+
+    <p>One of the stand-alone photography categories is indoor photography.
+      Very often, under these conditions, the lighting in the scene is quite complicated:
+      there are many sources of lighting (light from the window, incandescent lamps, LEDs, and so on)
+      in different places of the scene. Under these conditions, the determination of the dominant
+      source in the scene may turn out to be a rather difficult task.
+    </p>
+
+    <p>Since this task in itself is difficult for the final quality assessment in this track,
+      we will use the <b>average reproduction error</b> 
+      (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
+    </p>
+
+    <h2>Two-illuminant track</h2>
+
+    <p>In everyday life, there are rarely situations where there is really only one source of lighting in the scene.
+      Even during the day, it is customary to divide the lighting into two sources - the sun and sky.
+      The main question of this track is whether it is possible to reliably extract
+      more information about lighting using a single image.
+      For these purposes, a dataset was assembled using a volumetric color target (SpyderCube)
+      whose faces are illuminated by different sources.
+      This dataset includes images for which the angle between GT is greater than or equal to two degrees.</p>
+
+      <p>For this track, the ranking metric is <b>squared sum of two angular reproduction errors</b>.
+        There are two variants to establish the correspondence between answers and ground truths,
+        so we will choose one with minimal error 
+        (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
+      </p>
+
+    <h2>Structure of the datasets</h2>
+
+    <p>All images were taken with the same camera sensor model, with the three cameras Canon 550D x1 and Canon 600D x2.</p>
+
+    <p>The image ordering with respect to their creation time.
+      In the lower right corner of each image, the SpyderCube calibration
+      object is placed. Its two neutral 18% gray faces were used to determine
+      the ground-truth illumination for each image. Due to the angle between
+      these two faces, for images with two illuminations, e.g. one in the
+      shadow and one under the direct sunlight, it was possible to
+      simultaneously recover both of them and they are provided for each image.</p>
+
+    <p>In all dataset images with two distinct illuminations, one of them is always
+      dominant so that the uniform illumination assumption effectively remains valid.
+      For Indoor Dataset we’ve chosen only images with an angular difference
+      less than 2 degrees between left and right edges of the SpyderCube.
+      For dominant light source was chosen the brighter one.
+      The black level, i.e. the intensity that has to be subtracted from all
+      images in order to use them properly, equals 2048.</p>
+
+    <p>
+      All datasets contain files of three types:
+      <ul>
+        <li>Preview files: name.jpg</li>
+        <li>Raw files: name.png. To generate these files we’ve used dcraw library with options -D -4 -T
+          and then applying only simple subsampling for debayering.</li>
+        <li>Files with answers and meta-information: name.json. These files contain
+          information about capturing process retrieved from .cr2 files and also
+          our additional markup about scene content.</li>
+      </ul>
+    </p>
+    <p> Provided JSON files have the following field and structure
+      <ul>
+        <li>EXIF:ApertureValue</li>
+        <li>EXIF:ExposureTime</li>
+        <li>EXIF:ISO</li>
+        <li>EXIF:Model</li>
+        <li>EXIF:Orientation</li>
+        <li>MakerNotes:InternalSerialNumber</li>
+        <li>MakerNotes:LensModel: </li>
+        <li>ds_version</li>
+        <li>gt - <i>ground-truth chromaticity</i></li>
+        <li>left_gt - <i>left edge of SpyderCube chromaticity</i></li>
+        <li>right_gt - <i>right edge of SpyderCube chromaticity</i></li>
+        <li>properties
+          <ul>
+          <li>daytime</li>
+          <li>has_known_objects. <i>Such as white paper, road signs, etc.</i></li>
+          <li>illumination. <i>Type of dominant illumination in the scene.</i> </li>
+          <li>is_sharp - <i>indicating whenever image is sharp or blured.</i> </li>
+          <li>light_objects. <i>List of light source in the scene.</i>></li>
+          <li>place. <i>List of three values: indoor, outdoor, unknown.</i></li>
+          <li>richness - <i>Indicating whenever the scene contains only almost single object color or not.</i></li>
+          <li>shadows - <i>Indicating whenever the scene contains shadows or not.</i></li>
+          </ul>
+        </li>
+      </ul>
+    </p>
+
+    <p>Python script for dataset images reading and visualization is provided <a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/make_preview.py">here</a>.</p>
+
+    <p>Please note, that final solutions for General and Indoor track should
+       be provided in the following <a href="example.csv">form</a> and for
+       Two-illuminant track in the following <a href="example2.csv">form</a>.
+    </p>
+
+    <p></p>
+    <h3>Bonus data</h3>
+
+    <p>CubePlus dataset was captured with exactly the same Canon 550D and can be
+       downloaded <a href="https://ipg.fer.hr/ipg/resources/color_constancy">here</a>.
+       We prepared the contest-like <a href="http://chromaticity.iitp.ru/cube_plus_info.zip">markup</a> for it.
+       The jsons contain extra 'contest_like' field, which is 'false' for images that
+       could be probably filtered out for the challenge.
+    </p>
+
+    <p>
+      Interested parties could find it potentially useful to use artificially created data.
+      What they need in that case is the Croatian Paper (CroP) dataset generator described in detail
+      in the paper "CroP: Color Constancy Benchmark Dataset Generator" that is currently available at arXiv.
+      The resources for the generator are available at <a href="https://ipg.fer.hr/ipg/resources/color_constancy">following link</a>.
+    </p>
+
+    <h3>Test datasets</h3>
+
+    <p>
+      The test data format differs slightly from the train one. 
+      The SpyderCube rectangle is cut out. 
+      JSON files lack ground truth answers and manually annotated properties. 
+      Image ids are shuffled. 
+
+    <p>
+      For each scene, the test datasets have the two files (name.PNG, name.JPG.JSON). name.JPG.JSON contain all information available during the shooting procedure:
+      <ul>
+        <li>EXIF:ApertureValue</li>
+        <li>EXIF:ExposureTime</li>
+        <li>EXIF:ISO</li>
+        <li>EXIF:Model</li>
+        <li>EXIF:Orientation</li>
+        <li>MakerNotes:InternalSerialNumber</li>
+        <li>MakerNotes:LensModel</li>
+      </ul>
+
+      The ds_version field of all the test files is 2.0.
+    </p>
+    
+    <h1>Prizes and awards</h1>
+
+    <p>Winners will receive money prizes:
+      <ul>
+        <li>First place in any track - $1000</li>
+        <li>Second place in any track - $700</li>
+        <li>Third  place in any track - $300</li>
+      </ul>
+      </p>
+
+    <p>Also, winners will receive a winner certificate, invitations
+      to the <a href="http://icmv.org/">ICMV conference</a> with a speech on their decision, and an opportunity
+      to publish the paper about challenge results.</p>
+    
+    <p>To receive a money prize, you need to take part in the <a href="http://icmv.org/">ICMV conference</a>.</p>
+
+    <h1>Organizers</h1>
+
+    <div class="pure-g" id="team">
+      <!-- Ershov -->
+      <div class="pure-u-1-3"><div class="ershov"></div></div>
+      <div class="pure-u-2-3"><b>Egor Ershov</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+      <!-- Savchik -->
+      <div class="pure-u-1-3"><div class="savchik"></div></div>
+      <div class="pure-u-2-3"><b>Alex Savchik</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+      <!-- Ilya -->
+      <div class="pure-u-1-3"><div class="ilya"></div></div>
+      <div class="pure-u-2-3"><b>Ilya Semenkov</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+      <!-- Arseniy -->
+      <div class="pure-u-1-3"><div class="arseniy"></div></div>
+      <div class="pure-u-2-3"><b>Arseniy Terekhin</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+      <!-- Daria -->
+      <div class="pure-u-1-3"><div class="daria"></div></div>
+      <div class="pure-u-2-3"><b>Daria Senshina</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+
+      <!-- Alexander -->
+      <div class="pure-u-1-3"><div class="alexander"></div></div>
+      <div class="pure-u-2-3"><b>Alexander Belokopytov</b><br>Kharkevich Institute for Information Transmission Problems</div>
+            
+      <!-- DPN -->
+      <div class="pure-u-1-3"><div class="dpn"></div></div>
+      <div class="pure-u-2-3"><b>Dmitry Nikolaev</b><br>Kharkevich Institute for Information Transmission Problems</div>
+
+      <!-- Banich -->
+      <div class="pure-u-1-3"><div class="banich"></div></div>
+      <div class="pure-u-2-3"><b>Nikola Banic</b><br> Gideon Brothers, Croatia</div>
+
+      <!-- Marko -->
+      <div class="pure-u-1-3"><div class="marko"></div></div>
+      <div class="pure-u-2-3"><b>Marko Subasic</b><br>University of Zagreb</div>
+
+      <!-- Sven -->
+      <div class="pure-u-1-3"><div class="sven"></div></div>
+      <div class="pure-u-2-3"><b>Sven Loncaric</b><br>University of Zagreb</div>
+
+      <!-- Artem -->
+      <div class="pure-u-1-3"><div class="artem"></div></div>
+      <div class="pure-u-2-3"><b>Artem Nikonorov</b><br>Image Processing Systems Institute</div>
+
+
+    </div>
+
+    <h1>Sponsorship</h1>
+
+    <a class="sponsor iitp" alt="Kharkevich Institute for Information Transmission Problems" href="http://iitp.ru"></a>
+    <a class="sponsor visillect" alt="Visillect - Computer Vision Solutions" href="http://visillect.com/"></a>
+
+    <h1>Papers</h1>
+
+    If you use these datasets in your research, please refer to our papers from the list
+    <ul>
+      <li>
+        Ershov, Egor I., A. V. Belokopytov, and A. V. Savchik. "Problems of dataset creation for light source estimation."
+        arXiv preprint <a href="https://arxiv.org/abs/2006.02692">arXiv:2006.02692</a>.
+      </li>
+    </ul>
+
+    <h1></h1>
+    <!-- subscribtion -->
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdw5Yh5OmL1iakK5Zzuqf04LjT1BoXNrJQeEme304c7z_D-aw/viewform?embedded=true" width="640" height="515" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+  </div>
+</body>
+</html>
