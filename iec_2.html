@@ -90,10 +90,31 @@
     .out-of-the-competition {
       background: #fff8dc; /* Цвет фона четных строк */
     }
-
+    .header .pure-menu {
+      border-bottom-color: black;
+      border-radius: 0;
+    }
+    .pure-menu-link {
+      padding: 1em .7em;
+    }
+    .pure-menu-selected {
+      background-color: #c0b73f33;
+    }
   </style>
 </head>
 <body>
+  <div class="pure-menu pure-menu-horizontal">
+    <a class="pure-menu-heading" href="">Illumination Estimation Challenges</a>
+  </div>
+
+  <div class="pure-menu pure-menu-horizontal">
+    <ul class="pure-menu-list">
+        <li class="pure-menu-item"><a href="index.html" class="pure-menu-link">Home</a></li>
+        <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link">IEC#1 (2019)</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a href="iec_2.html" class="pure-menu-link">IEC#2 (2020)</a></li>
+    </ul>
+  </div>
+
   <div class="banner">
     <h1 class="banner-head">
       <small>Kharkevich Institute for Information Transmission Problems</small><br>
@@ -321,7 +342,7 @@
         </tr>
       </tbody>
     </table>
-    
+
     <h2><a name="Leaderboard-Indoor" id="Leaderboard-Indoor">Indoor track</a></h2>
     <table class="pure-table">
       <thead>
@@ -410,7 +431,7 @@
         </tr>
       </tbody>
     </table>
-    
+
     <h2><a name="Leaderboard-Two-illuminant" id="Leaderboard-Two-illuminant">Two-illuminant track</a></h2>
     <table class="pure-table">
       <thead>
@@ -499,7 +520,7 @@
       </tbody>
     </table>
 
-    <a href='#footnote1' id='footnoteResolver1'>*</a> -- out of the competition (after the July 31). 
+    <a href='#footnote1' id='footnoteResolver1'>*</a> -- out of the competition (after the July 31).
 
     <h1>Rules for participation</h1>
 
@@ -519,7 +540,7 @@
         <li>Indoor case</li>
       </ul>
 
-      For each track we have prepared corresponding dataset and metric for final ranking. 
+      For each track we have prepared corresponding dataset and metric for final ranking.
       The metrics code is available on the <a href="https://github.com/Visillect/CubePlusPlus">github</a>.
       Details are provided in the following section. The key from the test part of the
       dataset is published below.
@@ -535,21 +556,21 @@
         <li>specify a nickname and a brief description of your method</li>
         <li>provide the Pastebin URLs where you have pasted your results</li>
       </ul>
-      You are expected to use <a href="https://pastebin.com/">Pastebin</a> (with the <i>Paste Exposure</i> parameter set to the <i>Unlisted</i> value) to store your illumination estimations and provide links to them in the submission form. 
+      You are expected to use <a href="https://pastebin.com/">Pastebin</a> (with the <i>Paste Exposure</i> parameter set to the <i>Unlisted</i> value) to store your illumination estimations and provide links to them in the submission form.
       The predictions for the test data should be in a CSV format, like <a href="https://github.com/Visillect/CubePlusPlus/tree/master/challenge/test/const_baseline">const</a> or <a href="https://github.com/Visillect/CubePlusPlus/tree/master/challenge/test/grey_world_baseline">GreyWorld</a> baselines.
       They will be checked with a code similar to <a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">this</a>.
       Submissions under serious suspicion of dishonorable conduct will not be taken into account.
     </p>
 
     <p>
-      Each team can submit up to 3 solutions for each track. They can be sent in a single Google Form submission or split to up to 9 submissions with various algorithm names and participant lists.      
-      The results will be published on August 2nd. As the alternative, you may send email to <a href="mailto:chroma@iitp.ru">chroma@iitp.ru</a> with answers till the same deadline, 
-      but we highly recommend using the submission form. 
+      Each team can submit up to 3 solutions for each track. They can be sent in a single Google Form submission or split to up to 9 submissions with various algorithm names and participant lists.
+      The results will be published on August 2nd. As the alternative, you may send email to <a href="mailto:chroma@iitp.ru">chroma@iitp.ru</a> with answers till the same deadline,
+      but we highly recommend using the submission form.
     </p>
 
     <h1>Detailed tracks description</h1>
 
-    For the challenge we have prepared new dataset, which is essentially extention of the CubePlus dataset. It will be published soon. 
+    For the challenge we have prepared new dataset, which is essentially extention of the CubePlus dataset. It will be published soon.
 
     <h2>General track</h2>
 
@@ -574,9 +595,9 @@
       This year, however, the main goal of this track is to create a <b>reliable solution</b>, the behavior of which,
       even in extreme cases, is not bad.</p>
 
-    <p>Therefore, to assess the quality of the proposed solutions, we will use the average 
+    <p>Therefore, to assess the quality of the proposed solutions, we will use the average
       <a href="https://ieeexplore.ieee.org/abstract/document/7494650">reproduction error</a>
-      for 25% of the worst images 
+      for 25% of the worst images
       (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
     </p>
 
@@ -591,7 +612,7 @@
     </p>
 
     <p>Since this task in itself is difficult for the final quality assessment in this track,
-      we will use the <b>average reproduction error</b> 
+      we will use the <b>average reproduction error</b>
       (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
     </p>
 
@@ -607,7 +628,7 @@
 
       <p>For this track, the ranking metric is <b>squared sum of two angular reproduction errors</b>.
         There are two variants to establish the correspondence between answers and ground truths,
-        so we will choose one with minimal error 
+        so we will choose one with minimal error
         (see&nbsp;<a href="https://github.com/Visillect/CubePlusPlus/blob/master/challenge/calc_metrics.py">code</a>).
       </p>
 
@@ -697,10 +718,10 @@
     <h3>Test datasets</h3>
 
     <p>
-      The test data format differs slightly from the train one. 
-      The SpyderCube rectangle is cut out. 
-      JSON files lack ground truth answers and manually annotated properties. 
-      Image ids are shuffled. 
+      The test data format differs slightly from the train one.
+      The SpyderCube rectangle is cut out.
+      JSON files lack ground truth answers and manually annotated properties.
+      Image ids are shuffled.
 
     <p>
       For each scene, the test datasets have the two files (name.PNG, name.JPG.JSON). name.JPG.JSON contain all information available during the shooting procedure:
@@ -716,7 +737,7 @@
 
       The ds_version field of all the test files is 2.0.
     </p>
-    
+
     <h1>Prizes and awards</h1>
 
     <p>Winners will receive money prizes:
@@ -730,7 +751,7 @@
     <p>Also, winners will receive a winner certificate, invitations
       to the <a href="http://icmv.org/">ICMV conference</a> with a speech on their decision, and an opportunity
       to publish the paper about challenge results.</p>
-    
+
     <p>To receive a money prize, you need to take part in the <a href="http://icmv.org/">ICMV conference</a>.</p>
 
     <h1>Organizers</h1>
@@ -760,7 +781,7 @@
       <!-- Alexander -->
       <div class="pure-u-1-3"><div class="alexander"></div></div>
       <div class="pure-u-2-3"><b>Alexander Belokopytov</b><br>Kharkevich Institute for Information Transmission Problems</div>
-            
+
       <!-- DPN -->
       <div class="pure-u-1-3"><div class="dpn"></div></div>
       <div class="pure-u-2-3"><b>Dmitry Nikolaev</b><br>Kharkevich Institute for Information Transmission Problems</div>
