@@ -52,13 +52,17 @@
     #night_imgs {
       width: 100%;
       height: 423px;
-      background: url(uspensky.jpg) no-repeat center -300px fixed;
+      background: #111 url(uspensky.jpg) no-repeat center -300px fixed;
       margin: 0 auto 0.5em auto;
       display: table;
       text-align: center;
       background-size: cover;
       text-align: center;
-
+    }
+    @media only screen and (max-device-width: 1500px) {
+        #night_imgs {
+             background-position-y: center;
+        }
     }
   </style>
 </head>
