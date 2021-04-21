@@ -16,32 +16,50 @@
   <!--<![endif]-->
   <style>
     body {
-    color: #666;
+      color: #666;
     }
 
     h1,h2,h3,h4,h5,h6 {
         color: #111;
     }
-
+    .header {
+        background-color: #111;
+    }
     .header .pure-menu {
         border-bottom-color: black;
         border-radius: 0;
     }
+    .pure-menu-heading {
+        color: #eee;
+    }
     .pure-menu-link {
         padding: 1em .7em;
+        color: #eee;
+    }
+    .pure-menu-link:visited {
+        color: #eee;
+    }
+    .pure-menu-link:hover {
+        background-color: #555;
+    }
+    .pure-menu-selected>.pure-menu-link:visited {
+        color:#eee;
     }
     .pure-menu-selected {
-      background-color: #c0b73f33;
+      background-color: #555;
     }
 
     #night_imgs {
-      width: 640px;
+      width: 100%;
       height: 423px;
-      background-image: url(night_front.jpg);
-      margin: 2.5em auto 0.5em auto;
-      display: block;
-    }
+      background: url(uspensky.jpg) no-repeat center -300px fixed;
+      margin: 0 auto 0.5em auto;
+      display: table;
+      text-align: center;
+      background-size: cover;
+      text-align: center;
 
+    }
   </style>
 </head>
 <body>
@@ -53,18 +71,19 @@
         <div class="pure-menu pure-menu-horizontal">
             <ul class="pure-menu-list">
                 <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link">IEC#1 (2019)</a></li>
                 <li class="pure-menu-item"><a href="iec_2.html" class="pure-menu-link">IEC#2 (2020)</a></li>
+                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link">IEC#1 (2019)</a></li>
             </ul>
         </div>
     </div>
 
-
-    <div style="background-color: #111;">
-        <div id="night_imgs"></div>
+    <div id="night_imgs">
+        <h1 class="banner-head">
+            Night image beautification challenge
+        </h1>
     </div>
     <div class="content">
-        <h1>Night image beautification challenge</h1>
+        <h1>Overview</h1>
 
         <p>In 2021 this challenge will be conducted in the scope of ICCV workshop (AIM 2021).</p>
         <p>The task of illumination estimation and automatic white balance has been successfully used by digital camera manufacturers around the world for decades. Despite this, night photography is still an extremely difficult scenario.</p>
