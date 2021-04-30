@@ -52,7 +52,7 @@
       width: 100%;
       height: 423px;
       background: #111 url(uspensky.jpg) no-repeat center -300px fixed;
-      margin: 0 auto 0.5em auto;
+      margin: 0 auto 3em auto;
       display: table;
       text-align: center;
       background-size: cover;
@@ -75,7 +75,7 @@
             <ul class="pure-menu-list">
                 <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">Home</a></li>
                 <li class="pure-menu-item"><a href="iec_2.html" class="pure-menu-link">IEC#2 (2020)</a></li>
-                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link">IEC#1 (2019)</a></li>
+                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link" target="_blank">IEC#1 (2019)</a></li>
             </ul>
         </div>
     </div>
@@ -86,16 +86,65 @@
         </h1>
     </div>
     <div class="content">
-        <h1>Overview</h1>
+        <h1>About challenge</h1>
 
-        <p>In 2021 this challenge will be conducted in the scope of ICCV workshop (AIM 2021).</p>
-        <p>The task of illumination estimation and automatic white balance has been successfully used by digital camera manufacturers around the world for decades. Despite this, night photography is still an extremely difficult scenario.</p>
-        <p>There are two reasons for this. First, in practice it is difficult to create a diverse dataset of night images. A color target which usually is placed close to the camera does not allow measuring all the variety of light sources in the scene. Secondly, even if you have all the information about the illuminants in the scene, it is not clear how exactly you need to shift the white point.</p>
-        <p>To overcome these limitations and stimulate the development of solutions in the field of night photography, we are announcing a competition for correcting night photos. Participants will be asked to develop a white balance algorithm that gives the most beautiful image, and the winner will be determined based on human studies and the opinion of professional photographers.</p>
-        <p><b>The goal:</b> is to create automatic solution for image beautification</p>
-        <p>How will we evaluate the measure of beauty?</p>
-        <p>We will have a two step evaluation procedure. At the first step we will use Yandex Toloka for fast top 10 algorithms selection. At the second stage we will invite photographers, which will accurately estimate how and why one algorithm is beautier than others.</p>
-        <p>List of organizers: IITP RAS (Moscow, Russia), Zagreb University (Croatia), York University (Canada)</p>
+        <p>In 2021 this challenge will be conducted in the scope of the ICCV workshop (AIM 2021).</p>
+
+        <p>The task of illumination estimation and automatic white balance has been successfully tackled by digital camera 
+            manufacturers around the world for decades. Despite this, night photography is still an extremely difficult scenario.</p>
+
+        <p>There are at least three reasons for this. First, in practice it is difficult to create a diverse dataset of night images. 
+            A color target which is usually placed close to the camera does not allow measuring all the variety of light sources in the scene. 
+            Second, even if all the information about the illuminants in the scene is available, it is still often not clear how exactly 
+            to shift the white point to consistently obtain a more or less satisfactory final result. Third, the tone mapping and brightness adjustment
+             play a much more important role in achieving appealing final results here than in the case of regular daytime images.</p>
+
+        <p>To overcome these limitations and to stimulate the development of solutions in the field of night photography, 
+            we are announcing a competition for processing night photos. Participants are asking to develop their own 
+            pipeline (from raw image to jpg) for night image beautification, and the winner will be determined by the mean opinion score 
+            formed by a mix of the general population and professional photographers. What makes this challenge particularly interesting is the 
+            fact that there is no dataset with a ground-truth, no specific dependence on powerful hardware, and no known clear strategy for obtaining 
+            the best solution.</p>
+
+        <h1>The goal</h1>
+
+        <p>The goal is to create an automated and repeatable solution for image beautification, 
+            with the specific targets being night images, that obtains the maximum mean opinion score quality.</p>
+
+        <h1>Contest data</h1>
+
+        <p>The contest data will consist of 100 exemplary raw images that will be freely available during the whole 
+            time of the contest and 100 test raw images that will also be available during the whole time of the contest, 
+            but in an encrypted form. The password for decrypting them will be given one day before the deadline for the 
+            submission of the results. All these raw images will consist only of non-processed intensities obtained from the camera sensors.
+        </p>
+
+        <p>The role of the exemplary images is to give an overview of the scenes that can be expected in the test images. 
+            For 10 exemplary images, 5 different solutions will be used to generate exemplary solutions that will be graded by the general 
+            public and professional photographers. The obtained ranking for these solutions will also be provided to give the participants 
+            an impression of what can be expected during the final scoring phase.
+        </p>
+
+        <h1>Evaluation</h1>
+
+        <p>Out of 100 submitted test images, only 50 randomly selected will be selected for further evaluation. 
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form 
+            with the password being given only after the contest.
+        </p>
+
+        <p>The evaluation procedure will consist of two stages. In the first stage, Yandex Toloka will be used to obtain the mean 
+            opinion score provided by the general public after performing a sufficient number of pairwise comparisons. 
+            The top 10 submitted solutions will then proceed to the second stage where several invited professional photographers will 
+            precisely judge how and why one algorithm result is more beautiful, appealing, and desirable than others.
+        </p>
+
+        <h1>Prizes</h1>
+
+        <p>First place - 1000$</p>
+        <p>Second place - 700$</p>
+        <p>Third place - 300$</p>
+
+        
 
     </div>
 </body>
