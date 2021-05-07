@@ -12,9 +12,13 @@ def load_lines(path, used_encoding="utf8"):
 	
 	return lines;
 
-def test1():
+
+
+
+
+def test1(inp_dir):
 	
-	input_dir="img/6/";
+	input_dir=inp_dir
 	
 	from os import listdir, rename;
 	from os.path import join;
@@ -28,11 +32,11 @@ def test1():
 		new_path=join(input_dir, ("%0"+str(len(str(n)))+"d%s")%(i+1, name[name.rfind("."):]));
 		rename(old_path, new_path);
 
-def test2():
+def test2(inp_dir):
 	
 	target_cols=128;
 	
-	input_dir="img/6/";
+	input_dir=inp_dir
 	
 	from os import listdir, rename;
 	from os.path import join;
@@ -52,7 +56,7 @@ def test2():
 		
 		f=target_cols/cols;
 		if (f!=1):
-			img=cv2.resize(img, dsize=(-1, -1), fx=f, fy=f);
+			img=cv2.resize(img, dsize=None, fx=f, fy=f);
 		
 		cv2.imwrite(output_path, img);
 		
@@ -71,7 +75,7 @@ def test3():
 		parts=l.split();
 		img_scores[parts[0]]=list(map(float, parts[1:]));
 	
-	#print(img_scores);
+	print(img_scores)
 	for j in range(len(img_scores[parts[0]])):
 		scores=[];
 		score_place=dict();
@@ -81,18 +85,18 @@ def test3():
 			s=str(float(parts[j+1])+(i/(10**6)));
 			score_place[s]=i;
 			scores.append(s);
-		#print(scores);
+		print(scores);
 		previous_positions_after_sorting=[score_place[x] for x in sorted(scores, key=lambda x:-float(x))];
 		changed_scores=[0]*len(scores);
 		for i in range(len(scores)):
 			changed_scores[previous_positions_after_sorting[i]]=i;
-		#print(changed_scores);
-		#print();
+		print(changed_scores);
+		print();
 		
 		for i, l in enumerate(img_lines):
 			parts=l.split();
 			img_scores[parts[0]][j]=changed_scores[i];
-	#print(img_scores);
+	print(img_scores);
 		
 	
 	start="\t\t\t\t";
@@ -113,11 +117,16 @@ def test3():
 
 def main():
 	
-	#rename the images
-	#test1();
-	
-	#create thumbnails
-	#test2();
+
+	# for i in range(1,7):
+	# 	inp_dir = "img/" + str(i) + "/"
+	# 	print(inp_dir)
+
+	# 	#rename the images
+	# 	test1(inp_dir);
+		
+	# 	#create thumbnails
+	# 	test2(inp_dir);
 	
 	#create the table data
 	test3();
