@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Night Image Beautification Challenge</title>
+  <title>Night Photography Rendering Challenge</title>
 
   <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
   <link rel="stylesheet" href="pricing.css">
@@ -82,63 +82,133 @@
 
     <div id="night_imgs">
         <h1 class="banner-head">
-            Night image beautification challenge
+            Night Photography Rendering Challenge
         </h1>
     </div>
     <div class="content">
-        <h1>About challenge</h1>
 
-        <p>In 2021 this challenge will be conducted in the scope of the ICCV workshop (AIM 2021).</p>
+        Welcome to the first "night photography" challenge.  This challenge is part of the AIM 2021 workshop at ICCV'21.
 
-        <p>The task of illumination estimation and automatic white balance has been successfully tackled by digital camera 
-            manufacturers around the world for decades. Despite this, night photography is still an extremely difficult scenario.</p>
+        <h2>Motivation for this challenge</h2>
 
-        <p>There are at least three reasons for this. First, in practice it is difficult to create a diverse dataset of night images. 
-            A color target which is usually placed close to the camera does not allow measuring all the variety of light sources in the scene. 
-            Second, even if all the information about the illuminants in the scene is available, it is still often not clear how exactly 
-            to shift the white point to consistently obtain a more or less satisfactory final result. Third, the tone mapping and brightness adjustment
-             play a much more important role in achieving appealing final results here than in the case of regular daytime images.</p>
-
-        <p>To overcome these limitations and to stimulate the development of solutions in the field of night photography, 
-            we are announcing a competition for processing night photos. Participants are asking to develop their own 
-            pipeline (from raw image to jpg) for night image beautification, and the winner will be determined by the mean opinion score 
-            formed by a mix of the general population and professional photographers. What makes this challenge particularly interesting is the 
-            fact that there is no dataset with a ground-truth, no specific dependence on powerful hardware, and no known clear strategy for obtaining 
-            the best solution.</p>
-
-        <h1>The goal</h1>
-
-        <p>The goal is to create an automated and repeatable solution for image beautification, 
-            with the specific targets being night images, that obtains the maximum mean opinion score quality.</p>
-
-        <h1>Contest data</h1>
-
-        <p>The contest data will consist of 100 exemplary raw images that will be freely available during the whole 
-            time of the contest and 100 test raw images that will also be available during the whole time of the contest, 
-            but in an encrypted form. The password for decrypting them will be given one day before the deadline for the 
-            submission of the results. All these raw images will consist only of non-processed intensities obtained from the camera sensors.
+        <p> Cameras apply onboard processing that renders captured sensor images (i.e., a raw image) to their photo-finished output 
+            encoded in a standard color space (e.g., an sRGB image).   
+            Images captured at night present unique challenges that are not found in most daytime images.  
+            For example,  daytime images assume a single illumination, while night images often have multiple illuminants, 
+            many of which are visible in the scene.   
+            The unique lighting environment present in night photography makes it unclear the best illumination correction to use 
+            when rendering a night photo.  
+            In addition, tone-curves and other photo-finishing strategies used to process daytime images might not be appropriate for night photos.  
+            Moreover, common image metrics that are correlated with perceptual quality  (e.g., SSIM and LPIPS) may not be suitable for night images.  
+            Finally, there is significantly less published research focused on image processing for night images. 
+            As a result, there are fewer "best practices" for processing night images.  
+            Encouraging research targeting night photography is the motivation for this challenge.    
         </p>
 
-        <p>The role of the exemplary images is to give an overview of the scenes that can be expected in the test images. 
-            For 10 exemplary images, 5 different solutions will be used to generate exemplary solutions that will be graded by the general 
-            public and professional photographers. The obtained ranking for these solutions will also be provided to give the participants 
-            an impression of what can be expected during the final scoring phase.
+        <h2>Challenge Goal and Uniqueness</h2>
+
+        <p> Given the nature of our challenge, we do not have ground truth images. 
+            Our challenge involves developing a rendering procedure that produces "visually pleasing" photographs over a wide range of night images.  
+            As a result, submissions will be judged through mean opinion scores from observers who will visually compare the submissions.  
+            A panel of professional photographers will further judge top solutions. 
+        </p>
+		
+        <h2>Contest data</h2>
+
+        <p> Participants will be given access to raw-RGB images of night scenes.  
+            These images have been captured using the same sensor type. 
+            Images will be encoded 16-bit PNG files with additional meta-data provided in JSON files.
         </p>
 
-        <h1>Evaluation</h1>
+        <p> The contest will start with an initial 100 images for participants to use for developing their algorithms.  
+            All data is available after registration (see form at the bottom of the page). 
+            Additional images will be made available during the challenge; see information below on evaluation and leaderboard.
+        </p>
 
-        <p>Out of 100 submitted test images, only 50 randomly selected will be selected for further evaluation. 
-            The indices of the selected images will be the same for all participants and given in advance in an encrypted form 
+        <p> As extra data, you can use the <a href = "https://ieeexplore.ieee.org/abstract/document/9296220">Cube++ dataset</a>, which was collected using the same cameras. 
+            The dataset is described in this article and can be downloaded from <a href = "https://zenodo.org/record/4153431">here</a>.
+        </p>
+
+        <p> Also we have provided code for the baseline algorithm and its demo on <a href = "https://github.com/createcolor/nightimaging">github</a>. </p>
+
+        <h2>Evaluation/Leadersboard</h2>
+
+        <p> The evaluation will consist of three validation checkpoints during the duration of the contest and 
+            one final checkpoint at the very end of the contest. 
+            Note that only the final checkpoint is mandatory -- the validation checkpoints are optional. 
+            This means that new participants can join at any time before the final submission deadline 
+            as long as they fulfill other challenge requirements.
+        </p>
+
+        <p> The mean opinion score for the validation checkpoints and the final checkpoint will be obtained through visual 
+            comparison that will be carried out using Yandex Toloka (similar to Mechanical Turk).   
+            Toloka users will rank their preferred solutions in a forced-choice manner.   
+            Note that Toloka will mainly rely on observers from Europe and Russia to perform the image ranking.  
+            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.  
+            Note that Toloka users will not know the identity of the participants.
+            Example of this evaluation is available <a href="ranking/index.html">here</a>.
+        </p>
+
+        <p> The results obtained during the validation checkpoints provide challenge teams feedback on their solutions' quality.  
+            During each validation checkpoint, 50 new test images will be given.  
+            Each participating team will be able to send up to two distinct solution image sets. 
+            Each of these solution sets should consist of exactly 50 images: one solution image per test image. 
+            Having two validation sets is intended to help participants test the behavior of different solutions.
+        </p>
+
+        <p> For the final submission, 100 test images will be made available.  
+            Only a single solution image set for the 100 test images will be allowed for the final submission. 
+            Among these 100 images, only 50 images will be used for further evaluation. 
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form, 
+            with the password being given only after the contest. Additionally, during the final checkpoint, the submitted solutions 
+            ranked among the top-10 based on the Toloka scores --- and that have results reproducible by the provided 
+            Docker code --- will proceed to the professional judge stage. In this final stage, professional photographers provide their selection.  
+            We will also ask judges to provide feedback on their decision.   
+            The consensus from the professional photographers will be used to select the final winners.
+        </p>
+
+        <p> We ask challenge participants to understand this type of evaluation is subjective in nature.    
+            We are designing the challenge to be as fair as possible, given the nature of the task.  
+            The challenge organizers reserve the right to modify the evaluation procedures 
+            if we feel it is necessary to improve the challenge. 
+        </p>
+
+        <h2>Submissions</h2>
+
+        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high quality compression). 
+            Each team can submit at most two solutions. Submission will be available via Google form, which will be sent to registered teams.
+        </p>
+
+        <p>We expect images of size 1300x866 for landscape orientation and 866x1300 for portrait one, in other cases we will rescale 
+            them automatically using simple linear methods. You can see an example of an expected JPG file in folder <a href="https://github.com/createcolor/nightimaging/tree/main/data">data</a> 
+            on challenge repository. 
+        </p>
+            
+        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format, 
+            as well as a Docker container with the runnable solutions for reproducing the submitted results. 
+            Among these 100 images, only 50 images will be used for further evaluation. 
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form, 
             with the password being given only after the contest.
         </p>
 
-        <p>The evaluation procedure will consist of two stages. In the first stage, Yandex Toloka will be used to obtain the mean 
-            opinion score provided by the general public after performing a sufficient number of pairwise comparisons. 
-            The top 10 submitted solutions will then proceed to the second stage where several invited professional photographers will 
-            precisely judge how and why one algorithm result is more beautiful, appealing, and desirable than others.
-        </p>
+        <h2>Timeline</h2>
 
-        <h1>Prizes</h1>
+        <img src="timeline.png" style="width:900px;">
+
+        <p>Organizers might change leaderboard deadlines to improve challenge, 
+            but final deadline remind the same, due to connection with AIM'2021 timeline.</p>
+                
+
+        <h2>Reporting</h2>
+
+        In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions 
+        in the form of short papers during the submission. 
+        If this report is not submitted, the participants that would otherwise win a prize will be passed over.
+
+        <h2>Prizes</h2>
+
+        <p>Winners will recieve winner certificate and will have an opportunity to submit their paper to 
+        AIM'2021 and participate in common report which also will be submitted to ICCV. Also winners will be awarded with money prize:</p>
 
         <table>
 			<tbody>
@@ -150,16 +220,65 @@
 				<tr>
 					<td>Second place</td>
 					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>$700</td>
+					<td>$650</td>
 				</tr>
 				<tr>
 					<td>Third place</td>
 					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>$300</td>
+					<td>$350</td>
 				</tr>
 			</tbody>
 		</table>
-		
+
+
+
+        <h2>Q&A</h2>
+
+        <p>If you still have any questions, please send an email: <a href="mailto:nightimagingcommittee@gmail.com">nightimagingcommittee@gmail.com</a></p>
+
+        <h2>List of organizers</h2>
+
+        <table>
+			<tbody>
+				<tr>
+					<td>Russian Academy of Sciences - IITP (Moscow, Russia)</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>Egor Ershov
+                        Denis Shepelev
+                        Vasily Tesalin
+                        Alex Savchik
+                        Arseniy Terekhin
+                        Illya Semenkov</td>
+				</tr>
+				<tr>
+					<td>Gideon Brothers (Croatia)</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>Nikola Banić</td>
+				</tr>
+				<tr>
+					<td>University of Zagreb (Croatia)</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>Karlo Koščević
+                        Marko Subašić
+                        Sven Lončarić</td>
+				</tr>
+                <tr>
+					<td>York University (Canada)</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>Michael S. Brown</td>
+				</tr>
+			</tbody>
+		</table>
+
+        <h2>Sponsorship</h2>
+
+        Huawei Tech
+        
+        <h2>Registration form</h2>
+
+        <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLScxbnUZhhhezNCxra8Ib5S-HHZo3tLNSOzNHpgUPlehP_o6eA/viewform?embedded=true" width="640" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </p>
     </div>
+
 </body>
 </html>
