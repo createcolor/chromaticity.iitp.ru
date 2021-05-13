@@ -91,41 +91,41 @@
 
         <h2>Motivation for this challenge</h2>
 
-        <p> Cameras apply onboard processing that renders captured sensor images (i.e., a raw image) to their photo-finished output 
-            encoded in a standard color space (e.g., an sRGB image).   
-            Images captured at night present unique challenges that are not found in most daytime images.  
-            For example,  daytime images assume a single illumination, while night images often have multiple illuminants, 
-            many of which are visible in the scene.   
-            The unique lighting environment present in night photography makes it unclear the best illumination correction to use 
-            when rendering a night photo.  
-            In addition, tone-curves and other photo-finishing strategies used to process daytime images might not be appropriate for night photos.  
-            Moreover, common image metrics that are correlated with perceptual quality  (e.g., SSIM and LPIPS) may not be suitable for night images.  
-            Finally, there is significantly less published research focused on image processing for night images. 
-            As a result, there are fewer "best practices" for processing night images.  
-            Encouraging research targeting night photography is the motivation for this challenge.    
+        <p> Cameras apply onboard processing that renders captured sensor images (i.e., a raw image) to their photo-finished output
+            encoded in a standard color space (e.g., an sRGB image).
+            Images captured at night present unique challenges that are not found in most daytime images.
+            For example,  daytime images assume a single illumination, while night images often have multiple illuminants,
+            many of which are visible in the scene.
+            The unique lighting environment present in night photography makes it unclear the best illumination correction to use
+            when rendering a night photo.
+            In addition, tone-curves and other photo-finishing strategies used to process daytime images might not be appropriate for night photos.
+            Moreover, common image metrics that are correlated with perceptual quality  (e.g., SSIM and LPIPS) may not be suitable for night images.
+            Finally, there is significantly less published research focused on image processing for night images.
+            As a result, there are fewer "best practices" for processing night images.
+            Encouraging research targeting night photography is the motivation for this challenge.
         </p>
 
         <h2>Challenge Goal and Uniqueness</h2>
 
-        <p> Given the nature of our challenge, we do not have ground truth images. 
-            Our challenge involves developing a rendering procedure that produces "visually pleasing" photographs over a wide range of night images.  
-            As a result, submissions will be judged through mean opinion scores from observers who will visually compare the submissions.  
-            A panel of professional photographers will further judge top solutions. 
+        <p> Given the nature of our challenge, we do not have ground truth images.
+            Our challenge involves developing a rendering procedure that produces "visually pleasing" photographs over a wide range of night images.
+            As a result, submissions will be judged through mean opinion scores from observers who will visually compare the submissions.
+            A panel of professional photographers will further judge top solutions.
         </p>
-		
+
         <h2>Contest data</h2>
 
-        <p> Participants will be given access to raw-RGB images of night scenes.  
-            These images have been captured using the same sensor type. 
+        <p> Participants will be given access to raw-RGB images of night scenes.
+            These images have been captured using the same sensor type.
             Images will be encoded 16-bit PNG files with additional meta-data provided in JSON files.
         </p>
 
-        <p> The contest will start with an initial 100 images for participants to use for developing their algorithms.  
-            All data is available after registration (see form at the bottom of the page). 
+        <p> The contest will start with an initial 100 images for participants to use for developing their algorithms.
+            All data is available after registration (see form at the bottom of the page).
             Additional images will be made available during the challenge; see information below on evaluation and leaderboard.
         </p>
 
-        <p> As extra data, you can use the <a href = "https://ieeexplore.ieee.org/abstract/document/9296220">Cube++ dataset</a>, which was collected using the same cameras. 
+        <p> As extra data, you can use the <a href = "https://ieeexplore.ieee.org/abstract/document/9296220">Cube++ dataset</a>, which was collected using the same cameras.
             The dataset is described in this article and can be downloaded from <a href = "https://zenodo.org/record/4153431">here</a>.
         </p>
 
@@ -133,61 +133,61 @@
 
         <h2>Evaluation/Leadersboard</h2>
 
-        <p> The evaluation will consist of three validation checkpoints during the duration of the contest and 
-            one final checkpoint at the very end of the contest. 
-            Note that only the final checkpoint is mandatory &#8211; the validation checkpoints are optional. 
-            This means that new participants can join at any time before the final submission deadline 
+        <p> The evaluation will consist of three validation checkpoints during the duration of the contest and
+            one final checkpoint at the very end of the contest.
+            Note that only the final checkpoint is mandatory &#8211; the validation checkpoints are optional.
+            This means that new participants can join at any time before the final submission deadline
             as long as they fulfill other challenge requirements.
         </p>
 
-        <p> The mean opinion score for the validation checkpoints and the final checkpoint will be obtained through visual 
-            comparison that will be carried out using Yandex Toloka (similar to Mechanical Turk).   
-            Toloka users will rank their preferred solutions in a forced-choice manner.   
-            Note that Toloka will mainly rely on observers from Europe and Russia to perform the image ranking.  
-            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.  
+        <p> The mean opinion score for the validation checkpoints and the final checkpoint will be obtained through visual
+            comparison that will be carried out using Yandex Toloka (similar to Mechanical Turk).
+            Toloka users will rank their preferred solutions in a forced-choice manner.
+            Note that Toloka will mainly rely on observers from Europe and Russia to perform the image ranking.
+            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.
             Note that Toloka users will not know the identity of the participants.
             Example of this evaluation is available <a href="ranking/index.html">here</a>.
         </p>
 
-        <p> The results obtained during the validation checkpoints provide challenge teams feedback on their solutions' quality.  
-            During each validation checkpoint, 50 new test images will be given.  
-            Each participating team will be able to send up to two distinct solution image sets. 
-            Each of these solution sets should consist of exactly 50 images: one solution image per test image. 
+        <p> The results obtained during the validation checkpoints provide challenge teams feedback on their solutions' quality.
+            During each validation checkpoint, 50 new test images will be given.
+            Each participating team will be able to send up to two distinct solution image sets.
+            Each of these solution sets should consist of exactly 50 images: one solution image per test image.
             Having two validation sets is intended to help participants test the behavior of different solutions.
         </p>
 
-        <p> For the final submission, 100 test images will be made available.  
-            Only a single solution image set for the 100 test images will be allowed for the final submission. 
-            Among these 100 images, only 50 images will be used for further evaluation. 
-            The indices of the selected images will be the same for all participants and given in advance in an encrypted form, 
-            with the password being given only after the contest. Additionally, during the final checkpoint, the submitted solutions 
-            ranked among the top-10 based on the Toloka scores &#8211; and that have results reproducible by the provided 
-            Docker code &#8211; will proceed to the professional judge stage. In this final stage, professional photographers provide their selection.  
-            We will also ask judges to provide feedback on their decision.   
+        <p> For the final submission, 100 test images will be made available.
+            Only a single solution image set for the 100 test images will be allowed for the final submission.
+            Among these 100 images, only 50 images will be used for further evaluation.
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form,
+            with the password being given only after the contest. Additionally, during the final checkpoint, the submitted solutions
+            ranked among the top-10 based on the Toloka scores &#8211; and that have results reproducible by the provided
+            Docker code &#8211; will proceed to the professional judge stage. In this final stage, professional photographers provide their selection.
+            We will also ask judges to provide feedback on their decision.
             The consensus from the professional photographers will be used to select the final winners.
         </p>
 
-        <p> We ask challenge participants to understand this type of evaluation is subjective in nature.    
-            We are designing the challenge to be as fair as possible, given the nature of the task.  
-            The challenge organizers reserve the right to modify the evaluation procedures 
-            if we feel it is necessary to improve the challenge. 
+        <p> We ask challenge participants to understand this type of evaluation is subjective in nature.
+            We are designing the challenge to be as fair as possible, given the nature of the task.
+            The challenge organizers reserve the right to modify the evaluation procedures
+            if we feel it is necessary to improve the challenge.
         </p>
 
         <h2>Submissions</h2>
 
-        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high quality compression). 
+        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high quality compression).
             Each team can submit at most two solutions. Submission will be available via Google form, which will be sent to registered teams.
         </p>
 
-        <p>We expect images of size 1300x866 for landscape orientation and 866x1300 for portrait one, in other cases we will rescale 
-            them automatically using simple linear methods. You can see an example of an expected JPG file in folder <a href="https://github.com/createcolor/nightimaging/tree/main/data">data</a> 
-            on challenge repository. 
+        <p>We expect images of size 1300x866 for landscape orientation and 866x1300 for portrait one, in other cases we will rescale
+            them automatically using simple linear methods. You can see an example of an expected JPG file in folder <a href="https://github.com/createcolor/nightimaging/tree/main/data">data</a>
+            on challenge repository.
         </p>
-            
-        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format, 
-            as well as a Docker container with the runnable solutions for reproducing the submitted results. 
-            Among these 100 images, only 50 images will be used for further evaluation. 
-            The indices of the selected images will be the same for all participants and given in advance in an encrypted form, 
+
+        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format,
+            as well as a Docker container with the runnable solutions for reproducing the submitted results.
+            Among these 100 images, only 50 images will be used for further evaluation.
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form,
             with the password being given only after the contest.
         </p>
 
@@ -195,19 +195,19 @@
 
         <img src="timeline.png" style="width:900px;">
 
-        <p>Organizers might change leaderboard deadlines to improve challenge, 
+        <p>Organizers might change leaderboard deadlines to improve challenge,
             but final deadline remind the same, due to connection with AIM'2021 timeline.</p>
-                
+
 
         <h2>Reporting</h2>
 
-        In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions 
-        in the form of short papers during the submission. 
+        In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions
+        in the form of short papers during the submission.
         If this report is not submitted, the participants that would otherwise win a prize will be passed over.
 
         <h2>Prizes</h2>
 
-        <p>Winners will recieve winner certificate and will have an opportunity to submit their paper to 
+        <p>Winners will recieve winner certificate and will have an opportunity to submit their paper to
         AIM'2021 and participate in common report which also will be submitted to ICCV. Also winners will be awarded with money prize:</p>
 
         <table>
@@ -234,46 +234,67 @@
 
         <h2>Q&A</h2>
 
-        <p>If you still have any questions, please send an email: <a href="mailto:nightimagingcommittee@gmail.com">nightimagingcommittee@gmail.com</a></p>
+        <p>If you still have any questions, please send an email: <a href="mailto:night.imaging.committee@gmail.com">nightimagingcommittee@gmail.com</a></p>
 
-        <h2>List of organizers</h2>
+        <h2>Organizers</h2>
 
-        <table>
-			<tbody>
-				<tr>
-					<td>Russian Academy of Sciences - IITP (Moscow, Russia)</td>
-					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>Egor Ershov
-                        Denis Shepelev
-                        Vasily Tesalin
-                        Alex Savchik
-                        Arseniy Terekhin
-                        Illya Semenkov</td>
-				</tr>
-				<tr>
-					<td>Gideon Brothers (Croatia)</td>
-					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>Nikola Banić</td>
-				</tr>
-				<tr>
-					<td>University of Zagreb (Croatia)</td>
-					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>Karlo Koščević
-                        Marko Subašić
-                        Sven Lončarić</td>
-				</tr>
-                <tr>
-					<td>York University (Canada)</td>
-					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
-					<td>Michael S. Brown</td>
-				</tr>
-			</tbody>
-		</table>
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>Russian Academy of Sciences - IITP (Moscow, Russia)</i></small></div>
+            <div class="pure-u-1-2" style="text-align: right;">
+                <div style="width:233px;height:119px;background:url(organizers_opt.svg) no-repeat 0px 0px;margin:30px 0 1.5em 0;display:inline-block;text-align: center;"></div>
+            </div>
+            <div class="pure-u-1-2">
+                <ul>
+                    <li>Egor Ershov</li>
+                    <li>Denis Shepelev</li>
+                    <li>Vasily Tesalin</li>
+                    <li>Alex Savchik</li>
+                    <li>Arseniy Terekhin</li>
+                    <li>Illya Semenkov</li><ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>Gideon Brothers (Croatia)</i></small></div>
+            <div class="pure-u-1-2" style="text-align: right;">
+                <div style="width:186px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -337px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            </div>
+            <div class="pure-u-1-2" style="padding-top: 41px;">
+                <ul><li>Nikola Banić</li></ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>University of Zagreb (Croatia)</i></small></div>
+            <div class="pure-u-1-2" style="text-align: right;">
+                <div style="width:129px;height:127px;background:url(organizers_opt.svg) no-repeat 0px -208px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            </div>
+            <div class="pure-u-1-2" style="padding-top: 37px;">
+                <ul>
+                    <li>Karlo Koščević</li>
+                    <li>Marko Subašić</li>
+                    <li>Sven Lončarić</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>York University (Canada)</i></small></div>
+            <div class="pure-u-1-2" style="text-align: right;">
+                <div style="width:233px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -124px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            </div>
+            <div class="pure-u-1-2" style="padding-top: 37px;">
+                <ul><li>Michael S. Brown</ul>
+            </div>
+        </div>
 
         <h2>Sponsorship</h2>
 
-        Huawei Tech
-        
+        <div style="text-align: center;">
+            <small><i>Huawei Tech</i></small><br>
+            <div style="width:213px;height:47px;background:url(organizers_opt.svg) no-repeat 0px -421px;margin:15px 0 1.5em 0;display:inline-block"></div>
+        </div>
+
         <h2>Registration form</h2>
 
         <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLScxbnUZhhhezNCxra8Ib5S-HHZo3tLNSOzNHpgUPlehP_o6eA/viewform?embedded=true" width="640" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
