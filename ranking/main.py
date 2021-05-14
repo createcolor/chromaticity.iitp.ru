@@ -76,27 +76,28 @@ def test3():
 		img_scores[parts[0]]=list(map(float, parts[1:]));
 	
 	print(img_scores)
-	for j in range(len(img_scores[parts[0]])):
-		scores=[];
-		score_place=dict();
-		for i, l in enumerate(img_lines):
-			parts=l.split();
-			#the addition is to break ties
-			s=str(float(parts[j+1])+(i/(10**6)));
-			score_place[s]=i;
-			scores.append(s);
-		print(scores);
-		previous_positions_after_sorting=[score_place[x] for x in sorted(scores, key=lambda x:-float(x))];
-		changed_scores=[0]*len(scores);
-		for i in range(len(scores)):
-			changed_scores[previous_positions_after_sorting[i]]=i;
-		print(changed_scores);
-		print();
-		
-		for i, l in enumerate(img_lines):
-			parts=l.split();
-			img_scores[parts[0]][j]=changed_scores[i];
-	print(img_scores);
+	if (False):
+		for j in range(len(img_scores[parts[0]])):
+			scores=[];
+			score_place=dict();
+			for i, l in enumerate(img_lines):
+				parts=l.split();
+				#the addition is to break ties
+				s=str(float(parts[j+1])+(i/(10**6)));
+				score_place[s]=i;
+				scores.append(s);
+			print(scores);
+			previous_positions_after_sorting=[score_place[x] for x in sorted(scores, key=lambda x:-float(x))];
+			changed_scores=[0]*len(scores);
+			for i in range(len(scores)):
+				changed_scores[previous_positions_after_sorting[i]]=i;
+			print(changed_scores);
+			print();
+			
+			for i, l in enumerate(img_lines):
+				parts=l.split();
+				img_scores[parts[0]][j]=changed_scores[i];
+		print(img_scores);
 		
 	
 	start="\t\t\t\t";
@@ -109,7 +110,7 @@ def test3():
 				str(len(str(len(img_scores[method]))))
 				src=img_dir+"/"+str(i+1)+"/"+("%02d"%(j+1))+".jpg";
 				src_thumbnail=img_dir+"/"+str(i+1)+"/"+("%02d"%(j+1))+"_t.jpg";
-				f.write(start+"\t<td><span style=\"display:none;\">"+str(s)+"</span><a href=\""+src+"\" target=\"_blank\"><img src=\""+src_thumbnail+"\" /></a></td>\n");
+				f.write(start+"\t<td align=\"center\"><a href=\""+src+"\" target=\"_blank\"><img src=\""+src_thumbnail+"\" /></a><br/><span>"+str(s)+"</span></td>\n");
 			f.write(start+"</tr>\n");
 	
 	
