@@ -1,6 +1,0 @@
-photographer 0.714
-canon 0.65
-wp 0.444
-sog 0.428
-iwp 0.414
-gw 0.35
