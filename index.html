@@ -87,102 +87,116 @@
     </div>
     <div class="content">
 
-        Welcome to the first "night photography rendering" challenge.  This challenge is part of the AIM 2021 workshop at ICCV'21.
+        Welcome to the "Night Photography" challenge part of the NTIRE workshop at CVPR'22.
 
         <h2>Motivation for this challenge</h2>
 
-        <p> Cameras apply onboard processing that renders captured sensor images (i.e., a raw image) to their photo-finished output
-            encoded in a standard color space (e.g., an sRGB image).
-            Images captured at night present unique challenges that are not found in most daytime images.
-            For example,  daytime images assume a single illumination, while night images often have multiple illuminants,
-            many of which are visible in the scene.
-            The unique lighting environment present in night photography makes it unclear the best illumination correction to use
-            when rendering a night photo.
-            In addition, tone-curves and other photo-finishing strategies used to process daytime images might not be appropriate for night photos.
-            Moreover, common image metrics that are correlated with perceptual quality  (e.g., SSIM and LPIPS) may not be suitable for night images.
-            Finally, there is significantly less published research focused on image processing for night images.
-            As a result, there are fewer "best practices" for processing night images.
-            Encouraging research targeting night photography is the motivation for this challenge.
+        <p> Cameras apply onboard processing to render RAW sensor images to the final 
+            photo-finished image encoded in a standard color space (e.g., sRGB). 
+            Images captured at night present unique challenges that are not typical 
+            in most daytime images. For example, it is often sufficient to assume 
+            a single global illumination in daytime images, 
+            while night images often have multiple illuminants, 
+            many of which are visible in the scene. 
+            The unique lighting environment present in night photography makes it 
+            unclear the best illumination correction to use for night image rendering. 
+            In addition, tone curves and similar photo-finishing strategies 
+            used to process daytime images may not be appropriate for night photography.
+            Moreover, common image metrics (e.g., SSIM and LPIPS) may not be 
+            suitable for night images. 
+            Finally, there is significantly less published research focused on 
+            image processing for night photography. As a result, there are fewer 
+            "best practices" for processing night images. 
+            Encouraging research targeting night photography is the main 
+            motivation for this challenge.
         </p>
 
         <h2>Challenge Goal and Uniqueness</h2>
 
-        <p> Given the nature of our challenge, we do not have ground truth images.
-            Our challenge involves developing a rendering procedure that produces "visually pleasing" photographs over a wide range of night images.
-            As a result, submissions will be judged through mean opinion scores from observers who will visually compare the submissions.
+        <p> Given the nature of our challenge, we do not have ground truth images. 
+            Our challenge involves developing a rendering procedure that 
+            produces "visually pleasing" photographs over a wide range of night images. 
+            As a result, submissions will be judged using mean opinion scores from 
+            observers asked to compare and rank the submissions 
+            based on their visual appearance. 
             A panel of professional photographers will further judge top solutions.
         </p>
 
-        <h2>Contest data</h2>
+        <h2>Challenge data</h2>
 
-        <p> Participants will be given access to raw-RGB images of night scenes.
-            These images have been captured using the same sensor type.
-            Images will be encoded 16-bit PNG files with additional meta-data provided in JSON files.
+        <p> The participants will be given access to raw-RGB images of night scenes.  
+            These images have been captured using the same sensor type and are 
+            encoded in 16-bit PNG files with additional meta-data provided in 
+            JSON files.
         </p>
 
-        <p> The contest will start with an initial 100 images for participants to use for developing their algorithms.
-            All data is available after registration (see form at the bottom of the page).
-            Additional images will be made available during the challenge; see information below on evaluation and leaderboard.
+        <p> The challenge will start with an initial 50 images provided to participants 
+            for algorithm development and testing. Data will be available after 
+            registration; see the form at the bottom of the page. 
+            Additional images will be made available during the challenge; 
+            see information below on evaluation and leaderboard below.
         </p>
 
         <p> As extra data, you can use the <a href = "https://ieeexplore.ieee.org/abstract/document/9296220">Cube++ dataset</a>, which was collected using the same cameras.
             The dataset is described in this article and can be downloaded from <a href = "https://zenodo.org/record/4153431">here</a>.
         </p>
 
-        <p> Also we have provided code for the baseline algorithm and its demo on <a href = "https://github.com/createcolor/nightimaging">GitHub</a>. </p>
+        <p> Also we have provided code for the baseline algorithm and its demo on <a href = "https://github.com/createcolor/nightimaging/blob/main/demo/process_img.ipynb">GitHub</a>. </p>
 
         <h2>Evaluation/Leadersboard</h2>
 
-        <p> The evaluation will consist of three validation checkpoints during the duration of the contest and
-            one final checkpoint at the very end of the contest.
-            Note that only the final checkpoint is mandatory &#8211; the validation checkpoints are optional.
-            This means that new participants can join at any time before the final submission deadline
-            as long as they fulfill other challenge requirements.
+        <p> The evaluation will consist of two validation checkpoints during the 
+            contest and one final checkpoint at the very end of the contest. 
+            Note that only the final checkpoint is mandatory &#8211; the validation checkpoints 
+            are optional. 
+            This means that new participants can join at any time before the final 
+            submission deadline, as long as they fulfill other challenge requirements.
         </p>
 
-        <p> The mean opinion score for the validation checkpoints and the final checkpoint will be obtained through visual
-            comparison that will be carried out using Yandex Toloka (similar to Mechanical Turk).
-            Toloka users will rank their preferred solutions in a forced-choice manner.
-            Note that Toloka will mainly rely on observers from Europe and Russia to perform the image ranking.
-            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.
+        <p> For the validation and final checkpoints, mean opinion scores will be 
+            obtained through visual comparison carried out using Yandex Toloka (similar to Mechanical Turk).   
+            Toloka users will rank their preferred solutions in a forced-choice manner.   
+            Note that Toloka will mainly rely on observers from Eastern Europe and Russia to perform the image ranking.
+            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.  
             Note that Toloka users will not know the identity of the participants.
             Example of this evaluation is available <a href="ranking/index.html">here</a>.
         </p>
 
-        <p> The results obtained during the validation checkpoints provide challenge teams feedback on their solutions' quality.
-            During each validation checkpoint, 50 new test images will be given.
-            Each participating team will be able to send up to two distinct solution image sets.
-            Each of these solution sets should consist of exactly 50 images: one solution image per test image.
+        <p> The results obtained during the validation checkpoints will provide feedback to challenge teams on their solutions' quality.  
+            During each validation checkpoint, 50 new test images will be given.  
+            Each participating team will be able to send up to two distinct solution image sets (i.e., you can test out two different algorithms for feedback). 
+            Each of these solution sets should consist of exactly 50 images: one solution image per test image.  
             Having two validation sets is intended to help participants test the behavior of different solutions.
         </p>
 
-        <p> For the final submission, 100 test images will be made available.
-            Only a single solution image set for the 100 test images will be allowed for the final submission.
-            Among these 100 images, only 50 images will be used for further evaluation.
-            The indices of the selected images will be the same for all participants and given in advance in an encrypted form,
-            with the password being given only after the contest.
+        <p> For the final submission, 100 test images will be made available.  
+            Only a single solution image set for the 100 test images will be allowed for the final submission. 
+            Among these 100 images, only 50 images will be used for further evaluation. 
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form, 
+            with the password being given only after the contest.  
+            Additionally, during the final checkpoint, the submitted solutions ranked among the top-10 based on the Toloka scores &#8211; 
+            and that have results reproducible by the provided Docker image (submission example will be provided) &#8211; will proceed to the professional judgment stage.  
+            In this final stage, professional photographers will provide their selection.  
+            We will also ask judges to provide feedback on their decision.  
+            The consensus from the professional photographers will be used to select the final winners.
         </p>
 
-        <p> In addition to popular ranking obtained through Toloka, during each checkpoint, the submitted solutions
-            ranked among the top-10 based on the Toloka scores &#8211; and that have results reproducible by the provided code in its
-            Docker environment &#8211; will also proceed to the professional judge stage. In this stage, professional photographers 
-            provide their selection. We will also ask judges to provide feedback on their decision and their concensus will 
-            be used to form the profession ranking.
+        <p> During the solution submission, the participants will have the option to make their 
+            Docker container open, i.e., publicly available after the challenge.  
+            Doing so will be a prerequisite to be eligible for money prizes that are described later.  
+            Nevertheless, even if the participants choose to keep their Docker container closed, they will still be eligible for winner certificates should they win one of the first three places, 
+            while the money prize will be passed on.
         </p>
 
-        <p> We ask challenge participants to understand this type of evaluation is subjective in nature.
-            We are designing the challenge to be as fair as possible, given the nature of the task. Because of that, and also to give 
-            two somewhat different subjective perspectives, there will be <b>two final rankings</b>: the popular one and 
-            the professional one, both of them formed as described earlier. The winners in both of these rankings will be eligible for 
-            monetary prizes if their solutions turn out to be verifiable in their respective Docker environments.
-            The challenge organizers reserve the right to modify the evaluation procedures
-            if they feel it is necessary to improve the challenge.
+        <p> Finally, we ask challenge participants to be mindful that this challenge relies on evaluations is subjective in nature.  
+            We are designing the challenge to be as fair as possible, given the nature of the task.  
+            The challenge organizers reserve the right to modify the evaluation procedures as necessary to improve the challenge. 
         </p>
 
         <h2>Submissions</h2>
 
-        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high-quality compression).
-            Each team can submit at most two solutions. Submission will be available via Google form, which will be sent to registered teams.
+        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high-quality compression). 
+            Each team can submit at most two solutions. Submissions will be available via Google form, which will be sent to registered teams.
         </p>
 
         <p>We expect images of size 1300x866 for landscape orientation and 866x1300 for portrait one, in other cases we will rescale
@@ -190,19 +204,34 @@
             on challenge repository.
         </p>
 
-        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format,
-            as well the runnable solutions with a Dockerfile for reproducing the submitted results.
-            Among these 100 images, only 50 images will be used for further evaluation.
-            The indices of the selected images will be the same for all participants and given in advance in an encrypted form,
-            with the password being given only after the contest.
+        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format, as well as a Docker container with the runnable solutions for reproducing the submitted results. Among these 100 images, only 50 images will be used for further evaluation. The indices of the selected images will be the same for all participants and given in advance in an encrypted form, with the password being given only after the contest. Note that for the preliminary and final submission according to Google policy, you will need to have a Google account.
         </p>
 
         <h2>Timeline</h2>
 
-        <img src="timeline.png" style="width:900px;">
+        <table>
+			<tbody>
+                <tr> 
+                    <td>Early February:</td> 
+                    <td>Start of the competition</td>
+                </tr>
+                <tr>
+                    <td>15 February:</td> 
+                    <td>First leaderboard</td>
+                </tr>
+                <tr>
+                    <td>1 March:</td> 
+                    <td>Second leaderboard</td>
+                </tr>
+                <tr>
+                    <td>13 March, 00:00 (GMT):</td> 
+                    <td>Final submission</td>
+                </tr>
+            </tbody>
+        </table>
+        </p>
 
-        <p>Organizers might change leaderboard deadlines to improve the challenge, 
-            but the final deadline REMAINS the same, due to connection with the AIM'2021 timeline.</p>
+        <p>* Please note that the timeline can be slightly changed, so it is advised to check the challenge web page over time.</p>
 
 
         <h2>Reporting</h2>
@@ -214,8 +243,13 @@
         <h2>Prizes</h2>
 
         <p>Winners will receive a winner certificate and will have an opportunity 
-            to submit their paper to AIM'2021 and participate in the common report 
-            which also will be submitted to ICCV. Also winners will be awarded with money prize:</p>
+            to submit their paper to NTIRE'2022 and participate in the common report 
+            which also will be submitted to CVPR workshop. 
+            Also winners will be awarded with money prize:</p>
+
+        <p>
+            <b>Photographer's choice</b>
+        </p>
 
         <table>
 			<tbody>
@@ -238,10 +272,34 @@
 		</table>
 
 
+        <p>
+            <b>People's choice</b>
+        </p>
+
+        <table>
+			<tbody>
+				<tr>
+					<td>First place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$1000</td>
+				</tr>
+				<tr>
+					<td>Second place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$650</td>
+				</tr>
+				<tr>
+					<td>Third place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$350</td>
+				</tr>
+			</tbody>
+		</table>
+
 
         <h2>Q&A</h2>
 
-        <p>If you still have any questions, please send an email: <a href="mailto:night.imaging.committee@gmail.com">night.imaging.committee@gmail.com</a></p>
+        <p>If you still have any questions, please send an email: <a href="mailto:nightphotochallenge@gmail.com">nightphotochallenge@gmail.com</a></p>
 
         <h2>Organizers</h2>
 
@@ -307,7 +365,7 @@
         <br>
         <hr>
         
-        <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLScxbnUZhhhezNCxra8Ib5S-HHZo3tLNSOzNHpgUPlehP_o6eA/viewform?embedded=true" width="800" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeCarS8xxKefu-nFqp9Zw-Ptx7hEjMlQ6UqrZCWe5jouj_9CQ/viewform?embedded=true" width="640" height="846" frameborder="0" marginheight="0" marginwidth="0">Загрузка…</iframe>
         </p>
     </div>
 
