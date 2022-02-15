@@ -59,9 +59,33 @@
       text-align: center;
     }
     @media only screen and (max-device-width: 1500px) {
-        #night_imgs {
-             background-position-y: center;
-        }
+      #night_imgs {
+        background-position-y: center;
+      }
+    }
+    .logo {
+      text-align: center;
+    }
+    .people {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .logo>div {
+        margin:10px 0 0.1em 0;
+        display:inline-block
+    }
+    @media screen and (min-width: 35.5em) {
+      .logo {
+        text-align: right;
+      }
+      .people {
+        text-align: left;
+      }
+      .logo>div {
+        margin:30px 0 1.5em 0;
+      }
     }
   </style>
 </head>
@@ -91,14 +115,14 @@
 
 		<h2>News and updates</h2>
 
-		<p> 
+		<p>
 			<u><b>February 14, 2022</b></u>
 			<ul>
 				<li>The information on how to access the validation dataset has been sent to the participants' e-mails.</li>
 				<li>Additional information is available on the <a href="leaderboard.html">leaderboard page</a>.</li>
 			</ul>
 		</p>
-		
+
 		<h2>Motivation for this challenge</h2>
 
         <p> Cameras apply onboard processing to render RAW sensor images to the final
@@ -154,7 +178,7 @@
         <p> Also we have provided code for the baseline algorithm and its demo on <a href = "https://github.com/createcolor/nightimaging/blob/main/demo/process_img.ipynb">GitHub</a>. </p>
 
         <h2>Evaluation/Leadersboard</h2>
-		
+
 		<p> <b>The current leaderboard is available <a href="leaderboard.html">HERE</a>.</b></p>
 
         <p> The evaluation will consist of two validation checkpoints during the
@@ -326,10 +350,10 @@
 
         <div class="pure-g" style="margin-bottom: 3em;">
             <div class="pure-u-1-1" style="text-align: center;"><small><i>Russian Academy of Sciences - IITP (Moscow, Russia)</i></small></div>
-            <div class="pure-u-1-2" style="text-align: right;">
-                <div style="width:233px;height:119px;background:url(organizers_opt.svg) no-repeat 0px 0px;margin:30px 0 1.5em 0;display:inline-block;text-align: center;"></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:233px;height:119px;background:url(organizers_opt.svg) no-repeat 0px 0px"></div>
             </div>
-            <div class="pure-u-1-2">
+            <div class="pure-u-1 pure-u-sm-1-2 people">
                 <ul>
                     <li>Egor Ershov</li>
                     <li>Denis Shepelev</li>
@@ -343,20 +367,20 @@
 
         <div class="pure-g" style="margin-bottom: 3em;">
             <div class="pure-u-1-1" style="text-align: center;"><small><i>Gideon Brothers (Croatia)</i></small></div>
-            <div class="pure-u-1-2" style="text-align: right;">
-                <div style="width:186px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -337px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:186px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -337px"></div>
             </div>
-            <div class="pure-u-1-2" style="padding-top: 41px;">
+            <div class="pure-u-1 pure-u-sm-1-2 people">
                 <ul><li>Nikola Banić</li></ul>
             </div>
         </div>
 
         <div class="pure-g" style="margin-bottom: 3em;">
             <div class="pure-u-1-1" style="text-align: center;"><small><i>University of Zagreb (Croatia)</i></small></div>
-            <div class="pure-u-1-2" style="text-align: right;">
-                <div style="width:129px;height:127px;background:url(organizers_opt.svg) no-repeat 0px -208px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:129px;height:127px;background:url(organizers_opt.svg) no-repeat 0px -208px"></div>
             </div>
-            <div class="pure-u-1-2" style="padding-top: 37px;">
+            <div class="pure-u-1 pure-u-sm-1-2 people">
                 <ul>
                     <li>Karlo Koščević</li>
                     <li>Marko Subašić</li>
@@ -367,22 +391,22 @@
 
         <div class="pure-g" style="margin-bottom: 3em;">
             <div class="pure-u-1-1" style="text-align: center;"><small><i>York University (Canada)</i></small></div>
-            <div class="pure-u-1-2" style="text-align: right;">
-                <div style="width:233px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -124px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:233px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -124px"></div>
             </div>
-            <div class="pure-u-1-2" style="padding-top: 37px;">
+            <div class="pure-u-1 pure-u-sm-1-2 people">
                 <ul><li>Michael S. Brown</ul>
             </div>
         </div>
 
         <div class="pure-g" style="margin-bottom: 3em;">
             <div class="pure-u-1-1" style="text-align: center;"><small><i>Swiss Federal Institute of Technology in Zurich (Switzerland)</i> and <i>University of Würzburg (Germany)</i></small></div>
-            <div class="pure-u-1-2" style="text-align: right;">
-                <div style="width:200px;height:35px;background:url(organizers_opt.svg) no-repeat 0px -474px;margin:30px 0 1.5em 0;display:inline-block"></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:200px;height:35px;background:url(organizers_opt.svg) no-repeat 0px -474px"></div>
                 <br>
-                <div style="width:192px;height:85px;background:url(organizers_opt.svg) no-repeat 0px -511px;margin:30px 0 1.5em 0;display:inline-block"></div>
+                <div style="width:192px;height:85px;background:url(organizers_opt.svg) no-repeat 0px -511px"></div>
             </div>
-            <div class="pure-u-1-2" style="padding-top: 37px;">
+            <div class="pure-u-1 pure-u-sm-1-2 people">
                 <ul><li>Radu Timofte</ul>
             </div>
         </div>
