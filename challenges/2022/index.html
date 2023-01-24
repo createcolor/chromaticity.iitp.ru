@@ -1,0 +1,464 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Night Photography Rendering Challenge</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+  <link rel="stylesheet" href="pricing.css">
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+  <!--<![endif]-->
+  <style>
+    body {
+      color: #666;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        color: #111;
+    }
+    .header {
+        background-color: #111;
+    }
+    .header .pure-menu {
+        border-bottom-color: black;
+        border-radius: 0;
+    }
+    .pure-menu-heading {
+        color: #eee;
+    }
+    .pure-menu-link {
+        padding: 1em .7em;
+        color: #eee;
+    }
+    .pure-menu-link:visited {
+        color: #eee;
+    }
+    .pure-menu-selected>.pure-menu-link:visited {
+        color:#eee;
+    }
+    .pure-menu-selected {
+      background-color: #555;
+    }
+    .pure-menu-active > .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover {
+      background-color: #555;
+    }
+    #night_imgs {
+      width: 100%;
+      height: 423px;
+      background: #111 url(uspensky.jpg) no-repeat center -300px fixed;
+      margin: 0 auto 3em auto;
+      display: table;
+      text-align: center;
+      background-size: cover;
+      text-align: center;
+    }
+    @media only screen and (max-device-width: 1500px) {
+      #night_imgs {
+        background-position-y: center;
+      }
+    }
+    .logo {
+      text-align: center;
+    }
+    .people {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .logo>div {
+        margin:10px 0 0.1em 0;
+        display:inline-block
+    }
+    @media screen and (min-width: 35.5em) {
+      .logo {
+        text-align: right;
+      }
+      .people {
+        text-align: left;
+      }
+      .logo>div {
+        margin:30px 0 1.5em 0;
+      }
+    }
+  </style>
+</head>
+<body>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">Illumination Estimation Challenges</a>
+        </div>
+
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="../../index.html" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">NIR#3 (2022)</a></li>
+                <li class="pure-menu-item"><a href="../2020/index.html" class="pure-menu-link">IEC#2 (2020)</a></li>
+                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link" target="_blank">IEC#1 (2019)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="night_imgs">
+        <h2 class="banner-head">
+            <b>Night Photography Rendering <br>  Challenge</b>
+        </h2>
+    </div>
+    <div class="content">
+
+        Welcome to the "Night Photography" challenge part of the <a href="https://data.vision.ee.ethz.ch/cvl/ntire22/" target="_blank">NTIRE workshop</a> at <a href="https://cvpr2022.thecvf.com/" target="_blank">CVPR 2022</a>.
+
+		<h2>News and updates</h2>
+
+		<p>
+            <u><b>March 31, 2022</b></u>
+			<ul>
+				<li>Results of the final leaderboard is published <a href="final-leaderboard.html">here</a> </li>
+			</ul>
+            <u><b>March 22, 2022</b></u>
+			<ul>
+				<li>The password for the final leaderboard is published <a href="final-leaderboard.html">here</a> </li>
+				<li><b>IMPORTANT!</b> The deadline for the final submission has been moved by 12 hours to 23 March 11:59 (GMT).</li>
+			</ul>
+			<u><b>March 13, 2022</b></u>
+			<ul>
+				<li>The comments of the professional photographer on the <a href="second-leaderboard.html#professional">results</a> of the second validation set have been <a href="expert-opinion-second-validation.html">published</a>.</a></li>
+			</ul>
+			<u><b>March 6, 2022</b></u>
+			<ul>
+				<li>The <a href="second-leaderboard.html#popular">people's choice</a> and the <a href="second-leaderboard.html#professional">professional photographer's choice</a> for the results of the second validation set have been <a href="second-leaderboard.html">published</a>.</a></li>
+			</ul>
+			<u><b>March 4, 2022</b></u>
+			<ul>
+				<li>The deadline for the final submission has been <a href="#timeline">moved</a> to March 22.</li>
+			</ul>
+			<u><b>February 28, 2022</b></u>
+			<ul>
+				<li>The leaderboard based on the results submitted until March 2, 23:59 (GMT) as well as the password required to decrypt the archive with the images will be available on the <a href="second-leaderboard.html">second leaderboard page</a>.</li>
+			</ul>
+			<u><b>February 24, 2022</b></u>
+			<ul>
+				<li>The leaderboard based on the photographer's opinion as well as its explanation in more detail is now available on the <a href="leaderboard.html">leaderboard page</a>.</li>
+			</ul>
+			<u><b>February 18, 2022</b></u>
+			<ul>
+				<li>The leaderboard based on the Toloka platform comparisons is now available on the <a href="leaderboard.html">leaderboard page</a>.</li>
+			</ul>
+			<u><b>February 14, 2022</b></u>
+			<ul>
+				<li>The information on how to access the validation dataset has been sent to the participants' e-mails.</li>
+				<li>Additional information is available on the <a href="leaderboard.html">leaderboard page</a>.</li>
+			</ul>
+		</p>
+
+		<h2>Motivation for this challenge</h2>
+
+        <p> Cameras apply onboard processing to render RAW sensor images to the final
+            photo-finished image encoded in a standard color space (e.g., sRGB).
+            Images captured at night present unique challenges that are not typical
+            in most daytime images. For example, it is often sufficient to assume
+            a single global illumination in daytime images,
+            while night images often have multiple illuminants,
+            many of which are visible in the scene.
+            The unique lighting environment present in night photography makes it
+            unclear the best illumination correction to use for night image rendering.
+            In addition, tone curves and similar photo-finishing strategies
+            used to process daytime images may not be appropriate for night photography.
+            Moreover, common image metrics (e.g., SSIM and LPIPS) may not be
+            suitable for night images.
+            Finally, there is significantly less published research focused on
+            image processing for night photography. As a result, there are fewer
+            "best practices" for processing night images.
+            Encouraging research targeting night photography is the main
+            motivation for this challenge.
+        </p>
+
+        <h2>Challenge Goal and Uniqueness</h2>
+
+        <p> Given the nature of our challenge, we do not have ground truth images.
+            Our challenge involves developing a rendering procedure that
+            produces "visually pleasing" photographs over a wide range of night images.
+            As a result, submissions will be judged using mean opinion scores from
+            observers asked to compare and rank the submissions
+            based on their visual appearance.
+            A professional <a href="#photographer">photographer</a> will further judge top solutions.
+        </p>
+
+        <h2>Challenge data</h2>
+
+        <p> The participants will be given access to raw-RGB images of night scenes.
+            These images have been captured using the same sensor type and are
+            encoded in 16-bit PNG files with additional meta-data provided in
+            JSON files.
+        </p>
+
+        <p> The challenge will start with an initial 50 images provided to participants
+            for algorithm development and testing. Data will be available after
+            registration; see the form at the bottom of the page.
+            Additional images will be made available during the challenge;
+            see information below on evaluation and leaderboard below.
+        </p>
+
+        <p> As extra data, you can use the <a href = "https://ieeexplore.ieee.org/abstract/document/9296220">Cube++ dataset</a>, which was collected using the same cameras.
+            The dataset is described in this article and can be downloaded from <a href = "https://zenodo.org/record/4153431">here</a>.
+        </p>
+
+        <p> Also we have provided code for the baseline algorithm and its demo on <a href = "https://github.com/createcolor/nightimaging/blob/main/demo/process_img.ipynb">GitHub</a>. </p>
+
+        <h2>Evaluation/Leadersboard</h2>
+
+		<p> <b>The current leaderboard is available <a href="leaderboard.html">HERE</a>.</b></p>
+
+        <p> The evaluation will consist of two validation checkpoints during the
+            contest and one final checkpoint at the very end of the contest.
+            Note that only the final checkpoint is mandatory &#8211; the validation checkpoints
+            are optional.
+            This means that new participants can join at any time before the final
+            submission deadline, as long as they fulfill other challenge requirements.
+        </p>
+
+        <p> For the validation and final checkpoints, mean opinion scores will be
+            obtained through visual comparison carried out using Toloka (similar to Mechanical Turk).
+            Toloka users will rank their preferred solutions in a forced-choice manner.
+            Note that Toloka will mainly rely on observers from Eastern Europe and Russia to perform the image ranking.
+            As a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers.
+            Note that Toloka users will not know the identity of the participants.
+            Example of this evaluation is available <a href="ranking/index.html">here</a>.
+        </p>
+
+        <p> The results obtained during the validation checkpoints will provide feedback to challenge teams on their solutions' quality.
+            During each validation checkpoint, 50 new test images will be given.
+            Each participating team will be able to send up to two distinct solution image sets (i.e., you can test out two different algorithms for feedback).
+            Each of these solution sets should consist of exactly 50 images: one solution image per test image.
+            Having two validation sets is intended to help participants test the behavior of different solutions.
+        </p>
+
+        <p> For the final submission, 100 test images will be made available.
+            Only a single solution image set for the 100 test images will be allowed for the final submission.
+            Among these 100 images, only 50 images will be used for further evaluation.
+            The indices of the selected images will be the same for all participants and given in advance in an encrypted form,
+            with the password being given only after the contest.
+            Additionally, during the final checkpoint, the submitted solutions ranked among the top-10 based on the Toloka scores &#8211;
+            and that have results reproducible by the provided Docker image (submission example will be provided) &#8211; will proceed to the professional judgment stage.
+            In this final stage, a professional <a href="#photographer">photographer</a> will provide his selection for the final winners and he will also be asked to provide feedback on his decision.
+        </p>
+
+        <p> During the solution submission, the participants will have the option to make their
+            Docker container open, i.e., publicly available after the challenge.
+            Doing so will be a prerequisite to be eligible for money prizes that are described later.
+            Nevertheless, even if the participants choose to keep their Docker container closed, they will still be eligible for winner certificates should they win one of the first three places,
+            while the money prize will be passed on.
+        </p>
+
+        <p> Finally, we ask challenge participants to be mindful that this challenge relies on evaluations is subjective in nature.
+            We are designing the challenge to be as fair as possible, given the nature of the task.
+            The challenge organizers reserve the right to modify the evaluation procedures as necessary to improve the challenge.
+        </p>
+
+        <h2>Submissions</h2>
+
+        <p> As mentioned above, for each evaluation check point, users will be allowed to submit 50 images in JPEG format (high-quality compression).
+            Each team can submit at most two solutions. Submissions will be available via Google form, which will be sent to registered teams.
+        </p>
+
+        <p>We expect images of size 1300x866 for landscape orientation and 866x1300 for portrait one, in other cases we will rescale
+            them automatically using simple linear methods. You can see an example of an expected JPG file in folder <a href="https://github.com/createcolor/nightimaging/tree/main/data">data</a>
+            on challenge repository.
+        </p>
+
+        <p> For the final evaluation, a submission will have to contain 100 processed images in the JPEG format, as well as a Docker container with the runnable solutions for reproducing the submitted results. Among these 100 images, only 50 images will be used for further evaluation. The indices of the selected images will be the same for all participants and given in advance in an encrypted form, with the password being given only after the contest. Note that for the preliminary and final submission according to Google policy, you will need to have a Google account.
+        </p>
+
+        <h2><a name="timeline">Timeline</h2>
+
+        <table>
+			<tbody>
+                <tr>
+                    <td>Early February:</td>
+                    <td>Start of the competition</td>
+                </tr>
+                <tr>
+                    <td>15 February:</td>
+                    <td>First leaderboard</td>
+                </tr>
+                <tr>
+                    <td><strike>1 March</strike> 2 March:</td>
+                    <td>Second leaderboard</td>
+                </tr>
+                <tr>
+                    <td><strike>12 March</strike> <strike>22 March</strike> 23 March 11:59 (GMT):&nbsp;</td>
+                    <td>Final submission</td>
+                </tr>
+            </tbody>
+        </table>
+        </p>
+
+        <p>* Please note that the timeline can be slightly changed, so it is advised to check the challenge web page over time.</p>
+
+
+        <h2>Reporting</h2>
+
+        In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions
+        in the form of short papers during the submission.
+        If this report is not submitted, the participants that would otherwise win a prize will be passed over.
+
+        <h2>Prizes</h2>
+
+        <p>Winners will receive a winner certificate and will have an opportunity
+            to submit their paper to NTIRE'2022 and participate in the common report
+            which also will be submitted to CVPR workshop.
+            Also winners will be awarded with money prize:</p>
+
+        <p>
+            <b>Photographer's choice</b>
+        </p>
+
+        <table>
+			<tbody>
+				<tr>
+					<td>First place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$1000</td>
+				</tr>
+				<tr>
+					<td>Second place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$650</td>
+				</tr>
+				<tr>
+					<td>Third place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$350</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+        <p>
+            <b>People's choice</b>
+        </p>
+
+        <table>
+			<tbody>
+				<tr>
+					<td>First place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$1000</td>
+				</tr>
+				<tr>
+					<td>Second place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$650</td>
+				</tr>
+				<tr>
+					<td>Third place</td>
+					<td style="padding:5px;">&nbsp;&nbsp;&nbsp;</td>
+					<td>$350</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+        <h2><a name="photographer">The photographer</a></h2>
+
+        <p><a href="michael-freeman.jpg" target="_blank"><img src="michael-freeman.jpg" width="256" align="left" style="padding-right:15px;padding-bottom:15px;" /></a><b>MICHAEL FREEMAN</b>, with an MA in Geography from Oxford University, is one of the world's most widely published photographers, and is the world's leading author on the practice of photography, with more than 4 million copies sold.<br/>
+		<br/>
+		In a career spanning five decades, and a range of work that includes both documentary reportage, studio and architecture, he has been published in almost all major publications worldwide, including Time-Life, GEO and a three-decade relationship with the Smithsonian magazine, for whom he has shot more than 40 stories. He has published 155 books, 78 of them on photography, including the seminal title on composition, The Photographer's Eye, in 28 languages.<br/>
+		<br/>
+		He also wrote the degree course on photography for the UK's Open College of the Arts, and has awards for his educational work, including the Prix Louis Philippe Clerc from the Musée Française de la Photographie in Bièvres, France, and Top Author Award in China. He was consultant for, and appeared in, a BBC Television series on photography, and has been a judge on many photographic competitions, including the Nikon Press Award. He speaks regularly at a wide range of institutions, including the Royal Geographical Society, the Smithsonian, Asia House, the Hay Literary Festival, Emirates Literary Festival, Beijing University, the China Central Academy of Fine Arts, Beijing Film Academy and Tsinghua University. He is also a consultant for leading camera and software manufacturers.<br/>
+		<br/>
+		For more information, please visit <a href="http://www.michaelfreemanphoto.com/" target="_blank">this website</a>, and <a href="https://www.instagram.com/michaelfreemanphotography/" target="_blank">Instagram</a>.
+		</p>
+
+        <h2>Q&amp;A</h2>
+
+        <p>If you still have any questions, please send an email: <a href="mailto:nightphotochallenge@gmail.com">nightphotochallenge@gmail.com</a></p>
+
+        <h2>Organizers</h2>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>Russian Academy of Sciences - IITP (Moscow, Russia)</i></small></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:233px;height:119px;background:url(organizers_opt.svg) no-repeat 0px 0px"></div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 people">
+                <ul>
+                    <li>Egor Ershov</li>
+                    <li>Denis Shepelev</li>
+                    <li>Vasily Tesalin</li>
+                    <li>Alex Savchik</li>
+                    <li>Arseniy Terekhin</li>
+                    <li>Dmitry Bocharov</li>
+                    <li>Illya Semenkov</li><ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>Gideon Brothers (Croatia)</i></small></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:186px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -337px"></div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 people">
+                <ul><li>Nikola Banić</li></ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>University of Zagreb (Croatia)</i></small></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:129px;height:127px;background:url(organizers_opt.svg) no-repeat 0px -208px"></div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 people">
+                <ul>
+                    <li>Karlo Koščević</li>
+                    <li>Marko Subašić</li>
+                    <li>Sven Lončarić</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>York University (Canada)</i></small></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:233px;height:81px;background:url(organizers_opt.svg) no-repeat 0px -124px"></div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 people">
+                <ul><li>Michael S. Brown</ul>
+            </div>
+        </div>
+
+        <div class="pure-g" style="margin-bottom: 3em;">
+            <div class="pure-u-1-1" style="text-align: center;"><small><i>Swiss Federal Institute of Technology in Zurich (Switzerland)</i> and <i>University of Würzburg (Germany)</i></small></div>
+            <div class="pure-u-1 pure-u-sm-1-2 logo">
+                <div style="width:200px;height:35px;background:url(organizers_opt.svg) no-repeat 0px -474px"></div>
+                <br>
+                <div style="width:192px;height:85px;background:url(organizers_opt.svg) no-repeat 0px -511px"></div>
+            </div>
+            <div class="pure-u-1 pure-u-sm-1-2 people">
+                <ul><li>Radu Timofte</ul>
+            </div>
+        </div>
+
+        <h2>Sponsorship</h2>
+
+        <div style="text-align: center;">
+            <small><i>Huawei Tech</i></small><br>
+            <div style="width:213px;height:47px;background:url(organizers_opt.svg) no-repeat 0px -421px;margin:15px 0 1.5em 0;display:inline-block"></div>
+        </div>
+
+        <br>
+        <br>
+        <hr>
+
+        <p><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeCarS8xxKefu-nFqp9Zw-Ptx7hEjMlQ6UqrZCWe5jouj_9CQ/viewform?embedded=true" width="640" height="846" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+        </p>
+    </div>
+
+</body>
+</html>
