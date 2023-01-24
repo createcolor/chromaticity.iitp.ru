@@ -1,0 +1,49 @@
+html { overflow-y: scroll; }
+
+img { border: 0; max-width: 100%; }
+
+h1 { 
+  text-align: center;
+}
+
+#keywords {
+  margin: 0 auto;
+}
+
+#keywords thead {
+  cursor: pointer;
+  background: rgb(255, 255, 255);
+}
+#keywords thead tr th { 
+  font-weight: bold;
+  padding: 12px 30px;
+  padding-left: 42px;
+}
+#keywords thead tr th span { 
+  padding-right: 20px;
+  background-repeat: no-repeat;
+  background-position: 100% 100%;
+}
+
+#keywords thead tr th.headerSortUp, #keywords thead tr th.headerSortDown {
+  background: rgb(255, 255, 255);
+}
+
+#keywords thead tr th.headerSortUp span {
+  background-image: url('up-arrow.png');
+}
+#keywords thead tr th.headerSortDown span {
+  background-image: url('down-arrow.png');
+}
+
+
+#keywords tbody tr { 
+  color: #555;
+}
+#keywords tbody tr td {
+  text-align: center;
+  padding: 15px 10px;
+}
+#keywords tbody tr td.lalign {
+  text-align: left;
+}
