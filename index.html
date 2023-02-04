@@ -487,33 +487,40 @@ document.addEventListener('DOMContentLoaded', function(){
         resizing = false;
     }
     function makeDragable(dragElement, resizeElement, container, labelContainer, labelResizeElement) {
-        dragElement.addEventListener("mousedown", function(e) {
+        function onDown(e) {
             dragElement.classList.add('draggable');
             resizeElement.classList.add('resizable');
             e.preventDefault();
-        });
-        window.addEventListener("mousemove", function(e) {
+        }
+        dragElement.addEventListener("mousedown", onDown);
+        dragElement.addEventListener("touchstart", onDown);
+        function onMove(e) {
             if( !dragging) {
                 dragging =  true;
                 requestAnimationFrame(function(){
                     animateDraggedHandle(e, dragElement, this);
                 }.bind(dragElement.parentNode));
             }
-        });
-        dragElement.parentNode.addEventListener("mouseup", function(e){
+        }
+        window.addEventListener("mousemove", onMove);
+        document.addEventListener("touchmove", onMove);
+        function onUp(e){
             dragElement.classList.remove('draggable');
             resizeElement.classList.remove('resizable');
-        });
-        window.addEventListener("mouseup", function(e) {
-            dragElement.classList.remove('draggable');
-            resizeElement.classList.remove('resizable');
-        });
+        }
+
+        dragElement.parentNode.addEventListener("mouseup", onUp);
+        window.addEventListener("mouseup", onUp);
+        window.addEventListener("touchend", onUp);
+        window.addEventListener("touchcancel", onUp);
     }
 
     function animateDraggedHandle(e, dragElement, container) {
+        const tt = e.targetTouches;
+        const x = tt && tt.length ? tt[0].pageX : e.pageX;
         const leftEdge = container.offsetLeft;
         const leftRight = leftEdge + container.clientWidth;
-        const widthValue = Math.max(0, Math.min(container.clientWidth - 0, e.pageX - leftEdge)) / container.clientWidth * 100 + '%';
+        const widthValue = Math.max(0, Math.min(container.clientWidth - 0, x - leftEdge)) / container.clientWidth * 100 + '%';
         const isDraggable = dragElement.classList.contains('draggable');
         if (!isDraggable) {
             dragging = false;
