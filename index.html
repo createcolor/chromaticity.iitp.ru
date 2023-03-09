@@ -340,7 +340,10 @@
         <p> The results obtained during the validation checkpoints will provide feedback to the challenge teams on the quality of their solutions. During each validation checkpoint, 50 new test images will be provided to the participants. Each participating team will be able to submit up to two distinct solution image sets, with each set consisting of exactly 50 images, and will be intended to help the participants test the behavior of different solutions.
         </p>
 
-        <p> For the final submission, 100 test images will be made available. Only a single solution image set for the 100 test images will be allowed for the final submission. Out of these 100 images, only 50 images will be used for further evaluation, and the indices of the selected images will be the same for all participants and will be provided in advance in an encrypted form, with the password being given only after the contest. Additionally, during the final checkpoint, the submitted solutions ranked among the top-10 based on the Toloka scores will proceed to the professional judgment stage. In this final stage, a professional <a href="#photographer">photographer</a> will provide his selection for the final winners, and he will also be asked to provide feedback on his decision. The final winners will be selected based on the combined scores of the Toloka and the professional photographer.
+        <p> For the final evaluation, the submission must include 50 processed images in the JPEG format, as well as a Docker container that contains the runnable solution for reproducing the submitted results.
+            The solution will be evaluated on the public test dataset, which will be sent to the participants, and on the private part of the test dataset.
+            For private test evaluation images would be processed with the participant's solution from the Docker container.
+            Additionally, during the final checkpoint, the submitted solutions ranked among the top-10 based on the Toloka scores will proceed to the professional judgment stage. In this final stage, a professional <a href="#photographer">photographer</a> will provide his selection for the final winners, and he will also be asked to provide feedback on his decision. The final winners will be selected based on the combined scores of the Toloka and the professional photographer.
         </p>
 
         <p> During the solution submission, the participants will have the option to make their <b>Docker</b> container open, i.e., publicly available after the challenge. This will be a prerequisite to be eligible for the money prizes described later. Nevertheless, even if the participants choose to keep their Docker container closed, they will still be eligible for winner certificates should they win one of the first three places, while the money prize will be passed on.
@@ -357,10 +360,15 @@
         <p> As previously stated, for each evaluation checkpoint, participants will be permitted to submit 50 images in the JPEG format with high-quality compression. Each team may submit a maximum of two solutions. Submissions will be accepted through a Google form, which will be provided to registered teams.
         </p>
 
-        <p> We expect the images to have a size of 3464 x 5202 pixels for landscape orientation and 3456 x 5184 pixels for portrait orientation, in case of other sizes, images will be automatically scaled using simple linear methods. An example of the expected JPEG file format can be found in the <a href="https://github.com/createcolor/nightimaging23/tree/main/data">data</a> folder on the challenge repository.
+        <p> We expect the images to have a size of 3464 x 5202 pixels for landscape orientation and 5202 x 3464 pixels for portrait orientation, in case of other sizes, images will be automatically scaled using simple linear methods. An example of the expected JPEG file format can be found in the <a href="https://github.com/createcolor/nightimaging23/tree/main/data">data</a> folder on the challenge repository.
         </p>
 
-        <p> For the final evaluation, a submission must include 100 processed images in the JPEG format, as well as a Docker container containing the runnable solutions for reproducing the submitted results. Out of these 100 images, only 50 images will be used for further evaluation. The indices of the selected images will be the same for all participants, and they will be provided in advance in an encrypted form, with the password being given only after the contest. It is important to note that for both preliminary and final submission, participants must have a Google account in accordance with Google's policy.
+        <p> For the final evaluation, the submission must include 50 processed images in the JPEG format, as well as a Docker container that contains the runnable solution for reproducing the submitted results.
+            The solution will be evaluated on the public test dataset, which will be sent to the participants, and on the private part of the test dataset.
+            For private test evaluation images would be processed with the participant's solution from the Docker container.
+            </p>
+        <p>
+            It is important to note that for both preliminary and final submission, participants must have a Google account in accordance with Google's policy.
         </p>
 
         <h2><a name="timeline">Timeline</h2>
