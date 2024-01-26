@@ -294,10 +294,39 @@
         </figure>
 
         <h2>Challenge data</h2>
-			<p>The challenge data will be described here once it becomes available.</p>
+			<p>
+				The participants in this challenge will be granted access to raw-RGB images of night scenes, which have been captured using the <b>Huawei Mate 40 Pro</b> sensor type and are encoded in 16-bit PNG files. Accompanying these images will be additional meta-data, provided in JSON files. The challenge will commence with the provision of the initial images to participants, which will be utilized for the development and testing of their algorithms. Data access will be granted upon registration, and further information can be found on the registration form at the bottom of the page. Additional images will be made available throughout the challenge, and further details can be found in the information provided on the evaluation and leaderboard. As an added resource, the organizers have also provided code for a baseline algorithm, as well as a demonstration, on <a href = "https://github.com/createcolor/nightimaging23">GitHub</a>.
+			</p>
 
         <h2>Evaluation/Leadersboard</h2>
-			<p>The evaluation data and leadersboard will be published here once the results become available.</p>
+			<p>
+				The evaluation of the participant’s solutions in this challenge will consist of three checkpoints: <b>two validation</b> checkpoints during the contest and <b>one final</b> checkpoint at the conclusion of the contest. It is worth noting that only the final checkpoint is mandatory, and the validation checkpoints are optional. As such, new participants may join the challenge at any time before the final submission deadline, provided they fulfill the other requirements of the challenge.
+			</p>
+
+			<p>
+				Mean opinion scores will be obtained through visual comparison, carried out using Toloka (similar to Mechanical Turk). Toloka users will rank the solutions in a forced-choice manner. It is important to note that Toloka primarily relies on observers from Eastern Europe and and Central Asia to perform the image ranking, and as a result, there may be a cultural bias in terms of the preferred image aesthetics by the observers. Toloka users will not be made aware of the identity of the participants. An example of this evaluation process can be found at a <a href="./challenges/2022/ranking/index.html">specified link</a>.
+			</p>
+
+			<p>
+				The results obtained during the validation checkpoints will provide feedback to the challenge teams on the quality of their solutions. During each validation checkpoint, 125 new test images will be provided to the participants. Each participating team will be able to submit up to two distinct solution image sets, with each set consisting of exactly 125 images, and will be intended to help the participants test the behavior of different solutions.
+			</p>
+
+			<p> For the final evaluation, the submission must include 150 processed images in the JPEG format, as well as a Docker container that contains the runnable solution for reproducing the submitted results.
+				The solution will be evaluated on the public test dataset, which will be sent to the participants, and on the private part of the test dataset.
+				For private test evaluation images would be processed with the participant's solution from the Docker container.
+			</p>
+
+			<p>
+				During the solution submission, the participants will have the option to make their <b>Docker</b> container open, i.e., publicly available after the challenge. This will be a prerequisite to be eligible for the money prizes described later. Nevertheless, even if the participants choose to keep their Docker container closed, they will still be eligible for winner certificates should they win one of the first three places, while the money prize will be passed on.
+			</p>
+
+			<p>
+				It is important to note that the evaluation of this challenge is subjective in nature, and the challenge organizers have designed it to be as fair as possible, given the nature of the task. The challenge organizers reserve the right to modify the evaluation procedures as necessary to improve the fairness of the challenge.
+			</p>
+
+			<p>
+				It should be noted that only those solutions are allowed that use open components available to all participants in the competition (at the time of the start of the competition). <i>Proprietary solutions will be disqualified.</i>
+			</p>
 
 		<h2>Submissions</h2>
 			<p>The submission rules will be described here around the same time when the challenge data becomes available.</p>
