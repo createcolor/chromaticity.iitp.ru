@@ -1,0 +1,563 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Night Photography Rendering Challenge</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+  <link rel="stylesheet" href="pricing.css">
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+  <!--<![endif]-->
+  <style>
+    body {
+      color: #666;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        color: #111;
+    }
+    .header {
+        background-color: #111;
+    }
+    .header .pure-menu {
+        border-bottom-color: black;
+        border-radius: 0;
+    }
+    .pure-menu-heading {
+        color: #eee;
+    }
+    .pure-menu-link {
+        padding: 1em .7em;
+        color: #eee;
+    }
+    .pure-menu-link:visited {
+        color: #eee;
+    }
+    .pure-menu-selected>.pure-menu-link:visited {
+        color:#eee;
+    }
+    .pure-menu-selected {
+      background-color: #555;
+    }
+    .pure-menu-active > .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover {
+      background-color: #555;
+    }
+    #night_imgs {
+      width: 100%;
+      height: 423px;
+      background: #111 url(main_image_2024.jpg) no-repeat center -300px fixed;
+      margin: 0 auto 3em auto;
+      display: table;
+      text-align: center;
+      background-size: cover;
+      text-align: center;
+    }
+    @media only screen and (max-device-width: 1500px) {
+      #night_imgs {
+        background-position-y: center;
+      }
+    }
+    .logo {
+      text-align: center;
+    }
+    .people {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .logo>div {
+        margin:10px 0 0.1em 0;
+        display:inline-block
+    }
+    @media screen and (min-width: 35.5em) {
+      .logo {
+        text-align: right;
+      }
+      .people {
+        text-align: left;
+      }
+      .logo>div {
+        margin:30px 0 1.5em 0;
+      }
+    }
+  </style>
+<!-- style for slider --><style>
+    .cd-image-container {
+      position: relative;
+      max-width: 768px;
+      margin: 0em auto;
+    }
+    .cd-image-container img {
+      display: block;
+    }
+
+    .cd-image-label {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #ffffff;
+      padding: 1em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      -moz-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+      -o-transform: translateY(20px);
+      transform: translateY(20px);
+      -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+      -moz-transition: -moz-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+      transition: transform 0.3s 0.7s, opacity 0.3s 0.7s;
+    }
+    .cd-image-label.is-hidden {
+      visibility: hidden;
+    }
+    .is-visible .cd-image-label {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .cd-resize-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      /* Force Hardware Acceleration in WebKit */
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .cd-resize-img img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      height: 100%;
+      width: auto;
+      max-width: none;
+    }
+    .cd-resize-img .cd-image-label {
+      right: auto;
+      left: 0;
+    }
+    .is-visible .cd-resize-img {
+      width: 50%;
+      /* bounce in animation of the modified image */
+      -webkit-animation: cd-bounce-in 0.7s;
+      -moz-animation: cd-bounce-in 0.7s;
+      animation: cd-bounce-in 0.7s;
+    }
+
+    @-webkit-keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    @-moz-keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    @keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    .cd-handle {
+      position: absolute;
+      height: 44px;
+      width: 44px;
+      /* center the element */
+      left: 50%;
+      top: 50%;
+      margin-left: -22px;
+      margin-top: -22px;
+      border-radius: 50%;
+      background: #30377d url("/challenges/2023/assets/cd-arrows.svg") no-repeat center center;
+      cursor: move;
+      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0) scale(0);
+      -moz-transform: translate3d(0, 0, 0) scale(0);
+      -ms-transform: translate3d(0, 0, 0) scale(0);
+      -o-transform: translate3d(0, 0, 0) scale(0);
+      transform: translate3d(0, 0, 0) scale(0);
+    }
+    .cd-handle.draggable {
+      /* change background color when element is active */
+      background-color: #445b7c;
+    }
+    .is-visible .cd-handle {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0) scale(1);
+      -moz-transform: translate3d(0, 0, 0) scale(1);
+      -ms-transform: translate3d(0, 0, 0) scale(1);
+      -o-transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
+      -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0s 0.7s;
+      -moz-transition: -moz-transform 0.3s 0.7s, opacity 0s 0.7s;
+      transition: transform 0.3s 0.7s, opacity 0s 0.7s;
+    }
+
+    th {
+		padding:5px;
+	}
+	
+	td.rank_td {
+		padding:5px;
+		text-align:right;
+	}
+	
+	td.value_td {
+		padding:5px;
+		text-align:center;
+	}
+	
+	td.text_td {
+		padding:5px;
+		text-align:left;
+	}
+	tr.no_rank {
+		background-color:#DDDDDD;
+	}
+
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">Illumination Estimation Challenges</a>
+        </div>
+
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="challenges/2023/index.html" class="pure-menu-link">NIR#4 (2023)</a></li>
+                <li class="pure-menu-item"><a href="challenges/2022/index.html" class="pure-menu-link">NIR#3 (2022)</a></li>
+                <li class="pure-menu-item"><a href="challenges/2020/index.html" class="pure-menu-link">IEC#2 (2020)</a></li>
+                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link" target="_blank">IEC#1 (2019)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="night_imgs">
+        <h2 class="banner-head">
+            <b>Night Photography Rendering<br>Challenge 2024</b>
+        </h2>
+    </div>
+
+    <div class="content">
+
+		<h2>Third Leaderboard</h2>
+
+    For the third validation set, the results shown below were calculated in the same way as the results in the <a href="leaderboard.html">first</a> and <a href="second-leaderboard.html">second</a> leaderboards.<br/>
+		<br/>
+		<table align="center" style="border-collapse:collapse;border:1px solid #000000;" border="1">
+			<tbody>
+				<tr>
+					<th>Rank</th>
+					<th>Team</th>
+					<th>Member(s)</th>
+					<th>Affiliation</th>
+					<th>Score mean</th>
+				</tr>
+				<tr>
+					<td class="rank_td">1</td>
+					<td class="text_td">DH-AISP (submission&nbsp;2)</td>
+					<td class="text_td">Jin Guo</td>
+					<td class="text_td">Zhejiang Dahua Technology, China</td>
+					<td class="value_td">0.7545396566648475</td>
+				</tr>
+				<tr>
+					<td class="rank_td">2</td>
+					<td class="text_td">DH-AISP (submission&nbsp;1)</td>
+					<td class="text_td">Jin Guo</td>
+					<td class="text_td">Zhejiang Dahua Technology, China</td>
+					<td class="value_td">0.7214922041211121</td>
+				</tr>
+				<tr>
+					<td class="rank_td">3</td>
+					<td class="text_td">IVLTeam (submission&nbsp;2)</td>
+					<td class="text_td">Simone Bianco, Marco Buzzelli, Claudio Rota, Raimondo Schettini, Simone Zini</td>
+					<td class="text_td">University of Milano&nbsp;-&nbsp;Bicocca</td>
+					<td class="value_td">0.698771575932985</td>
+				</tr>
+				<tr>
+					<td class="rank_td">4</td>
+					<td class="text_td">MiAlgo (submission&nbsp;1)</td>
+					<td class="text_td">Shuai Liu</td>
+					<td class="text_td">Xiaomi Inc., China</td>
+					<td class="value_td">0.663367862560512</td>
+				</tr>
+				<tr>
+					<td class="rank_td">5</td>
+					<td class="text_td">MiAlgo (submission&nbsp;2)</td>
+					<td class="text_td">Shuai Liu</td>
+					<td class="text_td">Xiaomi Inc., China</td>
+					<td class="value_td">0.6615702052020493</td>
+				</tr>
+				<tr>
+					<td class="rank_td">6</td>
+					<td class="text_td">wdsdmjm (submission&nbsp;1)</td>
+					<td class="text_td">Menglan Li</td>
+					<td class="text_td">-</td>
+					<td class="value_td">0.6578474451209134</td>
+				</tr>
+				<tr>
+					<td class="rank_td">7</td>
+					<td class="text_td">baodahuawei (submission&nbsp;1)</td>
+					<td class="text_td">xjy</td>
+					<td class="text_td">Meizu</td>
+					<td class="value_td">0.6532571027688305</td>
+				</tr>
+				<tr>
+					<td class="rank_td">8</td>
+					<td class="text_td">baodahuawei (submission&nbsp;2)</td>
+					<td class="text_td">xjy</td>
+					<td class="text_td">Meizu</td>
+					<td class="value_td">0.6512449933785702</td>
+				</tr>
+				<tr>
+					<td class="rank_td">9</td>
+					<td class="text_td">IVLTeam (submission&nbsp;1)</td>
+					<td class="text_td">Simone Bianco, Marco Buzzelli, Claudio Rota, Raimondo Schettini, Simone Zini</td>
+					<td class="text_td">University of Milano&nbsp;-&nbsp;Bicocca</td>
+					<td class="value_td">0.6230245922536771</td>
+				</tr>
+				<tr>
+					<td class="rank_td">10</td>
+					<td class="text_td">wdsdmjm (submission&nbsp;2)</td>
+					<td class="text_td">Menglan Li</td>
+					<td class="text_td">-</td>
+					<td class="value_td">0.6033592145201198</td>
+				</tr>
+				<tr>
+					<td class="rank_td">11</td>
+					<td class="text_td">Double_J (submission&nbsp;2)</td>
+					<td class="text_td">Ji Shulin</td>
+					<td class="text_td">Tudouai</td>
+					<td class="value_td">0.5440351181428597</td>
+				</tr>
+				<tr>
+					<td class="rank_td">12</td>
+					<td class="text_td">SCBC (submission&nbsp;1)</td>
+					<td class="text_td">Lu Xu, Chao Zhang, Yasi Wang</td>
+					<td class="text_td">SRC-B</td>
+					<td class="value_td">0.4676621701612708</td>
+				</tr>
+				<tr>
+					<td class="rank_td">13</td>
+					<td class="text_td">SCBC (submission&nbsp;2)</td>
+					<td class="text_td">Lu Xu, Chao Zhang, Yasi Wang</td>
+					<td class="text_td">SRC-B</td>
+					<td class="value_td">0.42396013442588365</td>
+				</tr>
+				<tr>
+					<td class="rank_td">14</td>
+					<td class="text_td">play1play (submission&nbsp;2)</td>
+					<td class="text_td">Shuwei Yue, Yuyang Liu</td>
+					<td class="text_td">The Hong Kong Polytechnic University</td>
+					<td class="value_td">0.41909311392348114</td>
+				</tr>
+				<tr>
+					<td class="rank_td">15</td>
+					<td class="text_td">BigGuy (submission&nbsp;2)</td>
+					<td class="text_td">-</td>
+					<td class="text_td">Tianjin University</td>
+					<td class="value_td">0.3891065317233857</td>
+				</tr>
+				<tr>
+					<td class="rank_td">16</td>
+					<td class="text_td"><b>baseline</b></td>
+					<td class="text_td">-</td>
+					<td class="text_td">Organizers Team</td>
+					<td class="value_td">0.38604438094353694</td>
+				</tr>
+				<tr>
+					<td class="rank_td">17</td>
+					<td class="text_td">BigGuy (submission&nbsp;1)</td>
+					<td class="text_td">-</td>
+					<td class="text_td">Tianjin University</td>
+					<td class="value_td">0.32573561495990333</td>
+				</tr>
+				<tr>
+					<td class="rank_td">18</td>
+					<td class="text_td">Double_J (submission&nbsp;1)</td>
+					<td class="text_td">Ji Shulin</td>
+					<td class="text_td">Tudouai</td>
+					<td class="value_td">0.273975226115934</td>
+				</tr>
+				<tr>
+					<td class="rank_td">19</td>
+					<td class="text_td">OzUVGL (submission&nbsp;1)</td>
+					<td class="text_td">Furkan Kınlı, Doğa Yılmaz, Barış Özcan, Furkan Kıraç</td>
+					<td class="text_td">Özyeğin University<br/>Bahçeşehir University</td>
+					<td class="value_td">0.24941219560832925</td>
+				</tr>
+				<tr>
+					<td class="rank_td">20</td>
+					<td class="text_td">OzUVGL (submission&nbsp;2)</td>
+					<td class="text_td">Furkan Kınlı, Doğa Yılmaz, Barış Özcan, Furkan Kıraç</td>
+					<td class="text_td">Özyeğin University<br/>Bahçeşehir University</td>
+					<td class="value_td">0.24938719746043164</td>
+				</tr>
+				<tr>
+					<td class="rank_td">21</td>
+					<td class="text_td">play1play (submission&nbsp;1)</td>
+					<td class="text_td">Shuwei Yue, Yuyang Liu</td>
+					<td class="text_td">The Hong Kong Polytechnic University</td>
+					<td class="value_td">0.2175564369826828</td>
+				</tr>
+			</tbody>
+		</table>
+
+        <!--<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe4DOYsreCN8nTquRPVbTESogrqhsHvpb-Lj9lw4BP-TwmRAQ/viewform?embedded=true" width="640" height="890" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        -->
+        </p>
+    </div>
+<!-- code for slider -->
+<script>
+function $(selector){return document.querySelectorAll(selector);}
+document.addEventListener('DOMContentLoaded', function(){
+    var dragging = scrolling = resizing = false;
+    const imageComparisonContainers = $('.cd-image-container');
+    updateVisibility(imageComparisonContainers);
+
+    window.addEventListener('scroll', function(){
+        if( !scrolling) {
+            scrolling =  true;
+            requestAnimationFrame(function(){updateVisibility(imageComparisonContainers);});
+        }
+    });
+
+    //make the .cd-handle element draggable and modify .cd-resize-img width according to its position
+    imageComparisonContainers.forEach(function(actual){
+        makeDragable(
+            actual.querySelector('.cd-handle'),
+            actual.querySelector('.cd-resize-img'),
+            actual,
+            actual.querySelector('.cd-image-label[data-type="original"]'),
+            actual.querySelector('.cd-image-label[data-type="modified"]'));
+    });
+
+    //upadate images label visibility
+    window.addEventListener('resize', function(){
+        if( !resizing) {
+            resizing =  true;
+            requestAnimationFrame(function(){checkLabel(imageComparisonContainers);});
+        }
+    });
+
+    function updateVisibility(containers) {
+        containers.forEach(function(actualContainer){
+            if(document.scrollingElement.scrollTop + window.innerHeight * 0.5 > actualContainer.offsetTop) {
+                actualContainer.classList.add('is-visible');
+            }
+        });
+        scrolling = false;
+    }
+
+    function checkLabel(containers) {
+        containers.forEach(function(actual){
+            updateLabel(actual.querySelector('.cd-image-label[data-type="modified"]'), actual.querySelector('.cd-resize-img'), 'left');
+            updateLabel(actual.querySelector('.cd-image-label[data-type="original"]'), actual.querySelector('.cd-resize-img'), 'right');
+        });
+        resizing = false;
+    }
+    function makeDragable(dragElement, resizeElement, container, labelContainer, labelResizeElement) {
+        function onDown(e) {
+            dragElement.classList.add('draggable');
+            resizeElement.classList.add('resizable');
+            e.preventDefault();
+        }
+        dragElement.addEventListener("mousedown", onDown);
+        dragElement.addEventListener("touchstart", onDown);
+        function onMove(e) {
+            if( !dragging) {
+                dragging =  true;
+                requestAnimationFrame(function(){
+                    animateDraggedHandle(e, dragElement, this);
+                }.bind(dragElement.parentNode));
+            }
+        }
+        window.addEventListener("mousemove", onMove);
+        document.addEventListener("touchmove", onMove);
+        function onUp(e){
+            dragElement.classList.remove('draggable');
+            resizeElement.classList.remove('resizable');
+        }
+
+        dragElement.parentNode.addEventListener("mouseup", onUp);
+        window.addEventListener("mouseup", onUp);
+        window.addEventListener("touchend", onUp);
+        window.addEventListener("touchcancel", onUp);
+    }
+
+    function animateDraggedHandle(e, dragElement, container) {
+        const tt = e.targetTouches;
+        const x = tt && tt.length ? tt[0].pageX : e.pageX;
+        const leftEdge = container.offsetLeft;
+        const leftRight = leftEdge + container.clientWidth;
+        const widthValue = Math.max(0, Math.min(container.clientWidth - 0, x - leftEdge)) / container.clientWidth * 100 + '%';
+        const isDraggable = dragElement.classList.contains('draggable');
+        if (!isDraggable) {
+            dragging = false;
+            return;
+        }
+        dragElement.style.left = widthValue;
+        const resizeable = container.querySelector('.resizable');
+        resizeable.style.width = widthValue;
+
+        updateLabel(container.querySelector('.cd-image-label[data-type="modified"]'), container.querySelector('.cd-resize-img'), 'left');
+        updateLabel(container.querySelector('.cd-image-label[data-type="original"]'), container.querySelector('.cd-resize-img'), 'right');
+        dragging = false;
+    }
+
+    function updateLabel(label, resizeElement, position) {
+        if(position == 'left') {
+            ( label.offsetLeft + label.clientWidth < resizeElement.offsetLeft + resizeElement.clientWidth ) ? label.classList.remove('is-hidden') : label.classList.add('is-hidden') ;
+        } else {
+            ( label.offsetLeft > resizeElement.offsetLeft + resizeElement.clientWidth ) ? label.classList.remove('is-hidden') : label.classList.add('is-hidden') ;
+        }
+    }
+});
+</script>
+
+</body>
+</html>
