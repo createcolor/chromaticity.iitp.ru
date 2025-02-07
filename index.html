@@ -295,8 +295,42 @@
 			<p>More information on evaluation and leadersboard formation will be given soon.</p>
 
 		<h2>Submissions</h2>
-			<p>The submission rules will be described here around the same time when the challenge data becomes available.</p>
+        <p>
+          The evaluation of the participant’s solutions in this challenge will consist of four checkpoints: <b>three validation</b> checkpoints during the contest and <b>one final</b> checkpoint at the conclusion of the contest. It is worth noting that only the final checkpoint is mandatory, and the validation checkpoints are optional. As such, new participants may join the challenge at any time before the final submission deadline, provided they fulfill the other requirements of the challenge.
+        </p>
 
+        <p>
+          The dataset for the first validation checkpoint consisting of 50 images will be released at the start of the challenge and will only be evaluated using <a href="https://en.wikipedia.org/wiki/Structural_similarity_index_measure">SSIM</a> and <a href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">PSNR</a>, i.e., the mean opinion score will not be used here. The main goal here is for the participants to be able to conduct a simple evaluation of their solutions.
+        </p>
+
+        <p>
+          The datasets for the second and third validation checkpoint will be released according to the timeline and each will consist of 125 images. Both objective metrics such as SSIM and PSNR as well as the mean opinion score will be used for evaluation.
+        </p>
+
+        <p>The dataset for the final test checkpoint will consist of 150 images and the scoring will be the same as for the second and third validation checkpoints. The final checkpoint is mandatory for all participants who wish to be included in the final report and be eligible for prizes.
+        </p>
+
+    <h2>Submission rules</h2>
+        <p>
+          During the solution submission, the participants will have the option to make their <b>Docker</b> container open, i.e., publicly available after the challenge. This will be a prerequisite to be eligible for receiving winner certificates should they win one of the first three places and if they wish to be included in the final report.
+        </p>
+
+        <p>
+          It is important to note that part of the evaluation of this challenge is subjective in nature, and the challenge organizers have designed it to be as fair as possible, given the nature of the task. <b>The challenge organizers reserve the right to modify the evaluation procedures as necessary to improve the fairness of the challenge.</b>
+        </p>
+
+        <p>
+          It should be noted that only those solutions are allowed that use open components available to all participants in the competition (at the time of the start of the competition). <i>Proprietary solutions will be disqualified.</i>
+        </p>
+
+        <p>
+          One team is not allowed to make multiple accounts. If such a situation is detected, all accounts of the team can be disqualified.
+        </p>
+
+        <p>
+          It is allowed to use additional training data if a team has access to it. However, it would later be fair to report the use of additional data in the solution description, even though it is not mandatory.
+        </p>
+        
     <h2><a name="timeline">Timeline</a></h2>
 			<p><img src="assets/NIR 2025 timeline.png" width="512"></p>
       <p>* Please note that the timeline can be slightly changed, so it is advised to check the challenge web page over time.</p>
