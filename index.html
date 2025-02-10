@@ -265,14 +265,36 @@
 		Welcome to the "Night Photography" challenge part of the <a href="https://cvlai.net/ntire/2025/" target="_blank">NTIRE workshop</a> at <a href="https://cvpr.thecvf.com/Conferences/2025" target="_blank">CVPR 2025</a>. The challenge seeks to advance image processing methods for night photography by addressing the complexities of rendering images captured at night, particularly this year with raw mobile phone captures, and evaluating the results based on perceptual quality and computational efficiency.
 
 		<h2>News and updates</h2>
-		    <p>
-          <u><b>January 24th, 2025</b></u>
-          <ul>
-              <li>The <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> for participating in the 2025 challenge is available.</li>
-          </ul>
-        </p>
 
-        <h2>Motivation for this challenge</h2>
+      <p>
+        <u><b>February 10th, 2025</b></u>
+        <ul>
+            <li>The validation server is online.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 5th, 2025</b></u>
+        <ul>
+            <li>Train data (input and output) and validation data (inputs only) are now available through the <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> or on <a href="https://codalab.lisn.upsaclay.fr/competitions/21641">Codalab</a>.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 5th, 2025</b></u>
+        <ul>
+            <li>Train data (input and output) and validation data (inputs only) are now available through the <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> or on <a href="https://codalab.lisn.upsaclay.fr/competitions/21641">Codalab</a>.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>January 24th, 2025</b></u>
+        <ul>
+            <li>The <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> for participating in the 2025 challenge is available.</li>
+        </ul>
+      </p>
+
+<h2>Motivation for this challenge</h2>
         <p>The process of capturing and processing images taken by cameras relies on onboard processing to transform raw sensor data into polished photographs, typically encoded in a standard color space such as sRGB. Night photography, however, presents unique challenges not encountered in daylight scenes. Night images often feature complex lighting conditions, including multiple visible illuminants, and are characterized by distinctive noise patterns that make conventional photo-finishing techniques for daytime photography unsuitable. Additionally, widely used image quality metrics like SSIM and LPIPS are often ineffective for evaluating the nuances of night photography. In previous editions of this challenge, participants were tasked with processing raw night scene images into visually pleasing renders, assessed subjectively using mean opinion scores. These efforts have driven significant advancements in the field of night image processing.</p>
 
         <p>This year's challenge introduces a new and fundamentally different approach while retaining the use of the mean opinion score as an evaluation metric. Moving away from purely subjective aesthetics, the 2025 challenge will adopt a potentially more objective framework by leveraging paired datasets captured with a Huawei smartphone and a high-end Sony camera using a beam splitter to ensure identical perspectives. Participants will be provided with raw Huawei smartphone images as input and corresponding processed Sony camera images as the expected output. The goal is to develop algorithms that transform the raw Huawei images—characterized by higher noise levels, vignetting, and reduced detail—into outputs that convincingly resemble the high-quality processed Sony images.</p>
