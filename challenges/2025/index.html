@@ -1,0 +1,648 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Night Photography Rendering Challenge</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css">
+  <link rel="stylesheet" href="pricing.css">
+  <!--[if lte IE 8]>
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css">
+  <![endif]-->
+  <!--[if gt IE 8]><!-->
+      <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css">
+  <!--<![endif]-->
+  <style>
+    body {
+      color: #666;
+    }
+
+    h1,h2,h3,h4,h5,h6 {
+        color: #111;
+    }
+    .header {
+        background-color: #111;
+    }
+    .header .pure-menu {
+        border-bottom-color: black;
+        border-radius: 0;
+    }
+    .pure-menu-heading {
+        color: #eee;
+    }
+    .pure-menu-link {
+        padding: 1em .7em;
+        color: #eee;
+    }
+    .pure-menu-link:visited {
+        color: #eee;
+    }
+    .pure-menu-selected>.pure-menu-link:visited {
+        color:#eee;
+    }
+    .pure-menu-selected {
+      background-color: #555;
+    }
+    .pure-menu-active > .pure-menu-link, .pure-menu-link:focus, .pure-menu-link:hover {
+      background-color: #555;
+    }
+    #night_imgs {
+      width: 100%;
+      height: 423px;
+      background: #111 url(main_image_2025.jpg) no-repeat center -300px fixed;
+      margin: 0 auto 3em auto;
+      display: table;
+      text-align: center;
+      background-size: cover;
+      text-align: center;
+    }
+    @media only screen and (max-device-width: 1500px) {
+      #night_imgs {
+        background-position-y: center;
+      }
+    }
+    .logo {
+      text-align: center;
+    }
+    .people {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .logo>div {
+        margin:10px 0 0.1em 0;
+        display:inline-block
+    }
+    @media screen and (min-width: 35.5em) {
+      .logo {
+        text-align: right;
+      }
+      .people {
+        text-align: left;
+      }
+      .logo>div {
+        margin:30px 0 1.5em 0;
+      }
+    }
+  </style>
+<!-- style for slider --><style>
+    .cd-image-container {
+      position: relative;
+      max-width: 768px;
+      margin: 0em auto;
+    }
+    .cd-image-container img {
+      display: block;
+    }
+
+    .cd-image-label {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #ffffff;
+      padding: 1em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      opacity: 0;
+      -webkit-transform: translateY(20px);
+      -moz-transform: translateY(20px);
+      -ms-transform: translateY(20px);
+      -o-transform: translateY(20px);
+      transform: translateY(20px);
+      -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+      -moz-transition: -moz-transform 0.3s 0.7s, opacity 0.3s 0.7s;
+      transition: transform 0.3s 0.7s, opacity 0.3s 0.7s;
+    }
+    .cd-image-label.is-hidden {
+      visibility: hidden;
+    }
+    .is-visible .cd-image-label {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -moz-transform: translateY(0);
+      -ms-transform: translateY(0);
+      -o-transform: translateY(0);
+      transform: translateY(0);
+    }
+
+    .cd-resize-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      /* Force Hardware Acceleration in WebKit */
+      -webkit-transform: translateZ(0);
+      -moz-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      -o-transform: translateZ(0);
+      transform: translateZ(0);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .cd-resize-img img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      height: 100%;
+      width: auto;
+      max-width: none;
+    }
+    .cd-resize-img .cd-image-label {
+      right: auto;
+      left: 0;
+    }
+    .is-visible .cd-resize-img {
+      width: 50%;
+      /* bounce in animation of the modified image */
+      -webkit-animation: cd-bounce-in 0.7s;
+      -moz-animation: cd-bounce-in 0.7s;
+      animation: cd-bounce-in 0.7s;
+    }
+
+    @-webkit-keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    @-moz-keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    @keyframes cd-bounce-in {
+      0% {
+        width: 0;
+      }
+      60% {
+        width: 55%;
+      }
+      100% {
+        width: 50%;
+      }
+    }
+    .cd-handle {
+      position: absolute;
+      height: 44px;
+      width: 44px;
+      /* center the element */
+      left: 50%;
+      top: 50%;
+      margin-left: -22px;
+      margin-top: -22px;
+      border-radius: 50%;
+      background: #30377d url("/challenges/2023/assets/cd-arrows.svg") no-repeat center center;
+      cursor: move;
+      box-shadow: 0 0 0 6px rgba(0, 0, 0, 0.2), 0 0 10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0) scale(0);
+      -moz-transform: translate3d(0, 0, 0) scale(0);
+      -ms-transform: translate3d(0, 0, 0) scale(0);
+      -o-transform: translate3d(0, 0, 0) scale(0);
+      transform: translate3d(0, 0, 0) scale(0);
+    }
+    .cd-handle.draggable {
+      /* change background color when element is active */
+      background-color: #445b7c;
+    }
+    .is-visible .cd-handle {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0) scale(1);
+      -moz-transform: translate3d(0, 0, 0) scale(1);
+      -ms-transform: translate3d(0, 0, 0) scale(1);
+      -o-transform: translate3d(0, 0, 0) scale(1);
+      transform: translate3d(0, 0, 0) scale(1);
+      -webkit-transition: -webkit-transform 0.3s 0.7s, opacity 0s 0.7s;
+      -moz-transition: -moz-transform 0.3s 0.7s, opacity 0s 0.7s;
+      transition: transform 0.3s 0.7s, opacity 0s 0.7s;
+    }
+</style>
+
+</head>
+<body>
+    <div class="header">
+        <div class="pure-menu pure-menu-horizontal">
+            <a class="pure-menu-heading" href="">Night Photography Rendering and Illumination Estimation Challenges</a>
+        </div>
+
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item pure-menu-selected"><a href="index.html" class="pure-menu-link">Home - NIR#6 (2025)</a></li>
+                <li class="pure-menu-item"><a href="/challenges/2024/index.html" class="pure-menu-link">NIR#5 (2024)</a></li>
+                <li class="pure-menu-item"><a href="/challenges/2023/index.html" class="pure-menu-link">NIR#4 (2023)</a></li>
+                <li class="pure-menu-item"><a href="/challenges/2022/index.html" class="pure-menu-link">NIR#3 (2022)</a></li>
+                <li class="pure-menu-item"><a href="/challenges/2020/index.html" class="pure-menu-link">IEC#2 (2020)</a></li>
+                <li class="pure-menu-item"><a href="https://www.isispa.org/illumination-estimation-challenge/" class="pure-menu-link" target="_blank">IEC#1 (2019)</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="night_imgs">
+        <h2 class="banner-head">
+            <b>Night Photography Rendering<br>Challenge 2025</b>
+        </h2>
+    </div>
+
+    <div class="content">
+
+		Welcome to the "Night Photography" challenge part of the <a href="https://cvlai.net/ntire/2025/" target="_blank">NTIRE workshop</a> at <a href="https://cvpr.thecvf.com/Conferences/2025" target="_blank">CVPR 2025</a>. The challenge seeks to advance image processing methods for night photography by addressing the complexities of rendering images captured at night, particularly this year with raw mobile phone captures, and evaluating the results based on perceptual quality and computational efficiency.
+
+		<h2>News and updates</h2>
+
+    <p>
+      <u><b>August 12, 2025</b></u>
+      <ul>
+          <li>The finalists' solutions are now available at Google Drive <a href="https://drive.google.com/drive/folders/1jBW31fpwlATD7FBOVI_F70Xr15-dikQFEX4xh0FV1FPnD-UDsXP1DTW4SngDsMTYDpuExEIK?usp=sharing">here</a>.</li>
+      </ul>
+     </p>
+
+    <p>
+      <u><b>June 16, 2025</b></u>
+      <ul>
+          <li>The 2025 paper is available <a href="https://openaccess.thecvf.com/content/CVPR2025W/NTIRE/papers/Ershov_NTIRE_2025_Challenge_on_Night_Photography_Rendering_CVPRW_2025_paper.pdf">here</a>.</li>
+          <li>The 2025 dataset is available <a href="https://zenodo.org/records/15213321">here</a>.</li>
+      </ul>
+     </p>
+
+     <p>
+      <u><b>March 26th, 2025</b></u>
+      <ul>
+          <li>Final results have been released and they are available <a href="final.html">here</a>.</li>
+      </ul>
+     </p>
+
+    <p>
+      <u><b>March 17th, 2025</b></u>
+      <ul>
+          <li>Validation 4 results have been released and they are available <a href="validation4.html">here</a>.</li>
+      </ul>
+     </p>
+
+    <p>
+      <u><b>March 13th, 2025</b></u>
+      <ul>
+          <li>
+            <strong>Validation 4 and Alternative Submission Options</strong>
+            <p>Dear participants,</p>
+            <p>we are happy to anounce the start of the Validation 4 checkpoint. You can find the data at the Participate/Get Data section of the CodaLab page. Please submit your solutions <strong>until 13.03.2025 23:59 UTC+0</strong>.</p>
+            <p>Due to certain issues with CodaLab website and in preparation to the final Testing phase we provide <strong>an alternative way to submit your solution</strong>. You can fill out the form below and attach the resulting images as well as your docker solutions. Docker containers are not required for this checkpoint, however we encourage you to provide them as it will streamline the process of running your final solutions. Instructions can be found in the form.</p>
+            <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeN2VMkFL0e8Zx3XRBN3qhnQ7Vfo6spaCNd_MDkc5QHTzgN7g/viewform?usp=dialog" target="_blank">Link to the submission form</a></p>
+            <p>Responses submitted through the form will be run manually. Due to that, participants are limited to <strong>two solutions per day</strong>. Please only employ this method of submission when submitting through CodaLab is impossible. The results will be maintained in a table on the CodaLab page. Please note that it will not be updated in real-time.</p>
+            <p>Solutions sent through both CodaLab and Google Forms will be eligible for participating in Validation 4 checkpoint MOS evaluation. The <strong>last solution</strong> (between CodaLab and Forms) will be used for evaluation.</p>
+            <p>We remind you that <strong>submitting your docker solutions as well as reports will be necessary for participating in the Testing phase.</strong></p>
+            <p>We wish you the best of luck.</p>            
+
+          </li>
+      </ul>
+     </p>
+
+     <p>
+      <u><b>March 11th, 2025</b></u>
+      <ul>
+          <li>Validation 3 results have been released and they are available <a href="validation3.html">here</a>.</li>
+      </ul>
+     </p>
+
+     <p>
+        <u><b>March 10th, 2025</b></u>
+        <ul>
+            <li>Delay in MOS Scores for Validation 3</li>
+            <ul>
+                <li>Due to technical difficulties, the release of MOS scores for Validation 3 has been delayed. We sincerely apologize for this inconvenience and appreciate your patience. The results will be made available as soon as possible.</li>
+            </ul>
+            <li>Additional Validation 4 Checkpoint</li>
+            <ul>
+                <li>To provide you with additional feedback on your solutions, we will conduct a Validation 4 checkpoint. The data for Validation 4 will be released on March 11th, 2025, and the deadline for submission will be March 13th, 2025.</li>
+            </ul>
+            <li>Release of Additional Training Data</li>
+            <ul>
+                <li>To support further improvements to your models, we have decided to release additional training data. Specifically, the DSLR files from Validation 2 are now available for participants. You can find the download link in the "Get Data" section of CodaLab.</li>
+            </ul>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>March 3rd, 2025</b></u>
+        <ul>
+            <li>The third validation dataset is available. Submitting solutions to calculate the <b><u>mean opinion score</u></b> for the resulting images is possible until March 4th at 23:59 GMT+0.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 20th, 2025</b></u>
+        <ul>
+            <li>A new validation dataset is available.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 10th, 2025</b></u>
+        <ul>
+            <li>The validation server is online.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 5th, 2025</b></u>
+        <ul>
+            <li>Train data (input and output) and validation data (inputs only) are now available through the <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> or on <a href="https://codalab.lisn.upsaclay.fr/competitions/21641">Codalab</a>.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>February 5th, 2025</b></u>
+        <ul>
+            <li>Train data (input and output) and validation data (inputs only) are now available through the <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> or on <a href="https://codalab.lisn.upsaclay.fr/competitions/21641">Codalab</a>.</li>
+        </ul>
+      </p>
+
+      <p>
+        <u><b>January 24th, 2025</b></u>
+        <ul>
+            <li>The <a href="https://forms.gle/fWMTZie6GBBS5nH27" target="_blank">registration form</a> for participating in the 2025 challenge is available.</li>
+        </ul>
+      </p>
+
+<h2>Motivation for this challenge</h2>
+        <p>The process of capturing and processing images taken by cameras relies on onboard processing to transform raw sensor data into polished photographs, typically encoded in a standard color space such as sRGB. Night photography, however, presents unique challenges not encountered in daylight scenes. Night images often feature complex lighting conditions, including multiple visible illuminants, and are characterized by distinctive noise patterns that make conventional photo-finishing techniques for daytime photography unsuitable. Additionally, widely used image quality metrics like SSIM and LPIPS are often ineffective for evaluating the nuances of night photography. In previous editions of this challenge, participants were tasked with processing raw night scene images into visually pleasing renders, assessed subjectively using mean opinion scores. These efforts have driven significant advancements in the field of night image processing.</p>
+
+        <p>This year's challenge introduces a new and fundamentally different approach while retaining the use of the mean opinion score as an evaluation metric. Moving away from purely subjective aesthetics, the 2025 challenge will adopt a potentially more objective framework by leveraging paired datasets captured with a Huawei smartphone and a high-end Sony camera using a beam splitter to ensure identical perspectives. Participants will be provided with raw Huawei smartphone images as input and corresponding processed Sony camera images as the expected output. The goal is to develop algorithms that transform the raw Huawei images—characterized by higher noise levels, vignetting, and reduced detail—into outputs that convincingly resemble the high-quality processed Sony images.</p>
+        
+        <p>Mean opinion score will be employed to evaluate submissions, ensuring that human viewers, rather than automated metrics that might be exploited, determine how convincingly the processed Huawei images align with the processed Sony images. This focus on human perception underscores the importance of developing rendering algorithms that produce results that are not only technically accurate but also perceptually closer from the target images.</p>
+        
+        <p>By addressing the unique limitations of mobile phone raw images and the inherent complexities of night photography, the 2025 challenge seeks to advance the state of the art in image processing. The combination of objective input-output alignment and perceptual validation through mean opinion scores provides a robust framework for fostering innovation in mobile-focused night photography rendering where objectivity has a more pronounced role, but is not expected to be abused in anyway due to the final subjective oversight.</p>
+        
+        <h2>Challenge Goal and Uniqueness</h2>
+        <p>This challenge tackles the complexities of nighttime photography by leveraging paired datasets of raw Huawei smartphone images and processed Sony camera images, providing a clear ground truth for evaluation. The goal is to develop algorithms that process raw Huawei images to convincingly resemble the high-quality Sony outputs, addressing a long-standing challenge in computer vision.</p>
+
+        <p>Night photography is vital for applications like surveillance and security and also has artistic significance in creating stunning images. By combining objective ground-truth comparisons with human perception through mean opinion scores, the challenge ensures that results are both technically accurate and visually convincing.</p>
+        
+        <p>This unique framework bridges mobile device constraints, low-light conditions, and human-centric evaluation, advancing the state of the art in night image processing.</p>
+
+        <h2>Challenge data</h2>
+			    <p>The participants in this challenge will be granted access to raw-RGB images of night scenes, which have been simultaneously captured using a <b>Huawei</b> smartphone sensor and a <b>Sony</b> professional camera sensor by means of a <b>beam splitter</b>. The images are encoded in 16-bit PNG files. Accompanying these images will be additional meta-data, provided in JSON files. The challenge will commence with the provision of the initial images to participants, which will be utilized for the development and testing of their algorithms. Data access will be granted upon registration, and further information can be found on the registration form at the bottom of the page. Additional images will be made available throughout the challenge, and further details can be found in the information provided on the evaluation and leaderboard. As an added resource, the organizers have also provided code for a baseline algorithm, as well as a demonstration, on <a href = "https://github.com/createcolor/nightimaging25">GitHub</a>. </p>
+
+        <h2>Evaluation/Leaderboard</h2>
+			<p>More information on evaluation and leadersboard formation will be given soon.</p>
+
+		<h2>Submissions</h2>
+        <p>
+          The evaluation of the participant’s solutions in this challenge will consist of four checkpoints: <b>three validation</b> checkpoints during the contest and <b>one final</b> checkpoint at the conclusion of the contest. It is worth noting that only the final checkpoint is mandatory, and the validation checkpoints are optional. As such, new participants may join the challenge at any time before the final submission deadline, provided they fulfill the other requirements of the challenge.
+        </p>
+
+        <p>
+          The dataset for the first validation checkpoint consisting of 50 images will be released at the start of the challenge and will only be evaluated using <a href="https://en.wikipedia.org/wiki/Structural_similarity_index_measure">SSIM</a> and <a href="https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio">PSNR</a>, i.e., the mean opinion score will not be used here. The main goal here is for the participants to be able to conduct a simple evaluation of their solutions.
+        </p>
+
+        <p>
+          The datasets for the second and third validation checkpoint will be released according to the timeline and each will consist of 125 images. Both objective metrics such as SSIM and PSNR as well as the mean opinion score will be used for evaluation.
+        </p>
+
+        <p>The dataset for the final test checkpoint will consist of 150 images and the scoring will be the same as for the second and third validation checkpoints. The final checkpoint is mandatory for all participants who wish to be included in the final report and be eligible for prizes.
+        </p>
+
+    <h2>Submission rules</h2>
+        <p>
+          During the solution submission, the participants will have the option to make their <b>Docker</b> container open, i.e., publicly available after the challenge. This will be a prerequisite to be eligible for receiving winner certificates should they win one of the first three places and if they wish to be included in the final report.
+        </p>
+
+        <p>
+          It is important to note that part of the evaluation of this challenge is subjective in nature, and the challenge organizers have designed it to be as fair as possible, given the nature of the task. <b>The challenge organizers reserve the right to modify the evaluation procedures as necessary to improve the fairness of the challenge.</b>
+        </p>
+
+        <p>
+          It should be noted that only those solutions are allowed that use open components available to all participants in the competition (at the time of the start of the competition). <i>Proprietary solutions will be disqualified.</i>
+        </p>
+
+        <p>
+          One team is not allowed to make multiple accounts. If such a situation is detected, all accounts of the team can be disqualified.
+        </p>
+
+        <p>
+          It is allowed to use additional training data if a team has access to it. However, it would later be fair to report the use of additional data in the solution description, even though it is not mandatory.
+        </p>
+        
+    <h2><a name="timeline">Timeline</a></h2>
+			<p><img src="assets/NIR 2025 timeline.png" width="512"></p>
+      <p>* Please note that the timeline can be slightly changed, so it is advised to check the challenge web page over time.</p>
+		
+      <h2><a name="teams">Registered Teams</a></h2>
+			<p>The list of registered teams will be available here.</p>
+
+		<h2>Reporting</h2>
+			<p>In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions in the form of short papers during the submission. If this report is not submitted, the participants that would otherwise win a prize will be passed over.</p>
+
+    <h2>Prizes</h2>
+    <p>There will be two prize categories:
+      <ol>
+      <li>Objective metrics (best score on <a href="https://codalab.lisn.upsaclay.fr/competitions/21641">Codalab</a>)</li>
+      <li>Subjective metrics (best score based on MOS)</li>
+      </ol>
+      
+      First three places from each category will be awarded 1000 USD, 650 USD, and 350 USD for the first, second, and third place, respectively.</p>
+    <p><a name="prizes">Winners</a> will receive a winner certificate and will have an opportunity to submit their paper to NTIRE'2025 and participate in the common report which also will be submitted to CVPR workshop.</p>
+
+    <h2>Q&amp;A</h2>
+    <p>If you still have any questions, please send an email: <a href="mailto:nightphotochallenge@gmail.com">nightphotochallenge@gmail.com</a></p>
+
+    <h2>Organizer</h2>
+      <div class="pure-g" style="margin-bottom: 3em;">
+        <div class="pure-u-1-1" style="text-align: center;"><small><i>AIRI Institute</i></small></div>
+
+          <div class="pure-u-1 pure-u-sm-1-2 logo">
+              <div style="width:200px;height:90px;background:url(assets/airi.png) no-repeat 0px 5px; background-size: contain"></div>
+          </div>
+          <div class="pure-u-1 pure-u-sm-1-2 people">
+              <ul>
+              </ul>
+          </div>
+
+      </div>
+
+    <h2>Co-organizers</h2>
+
+      <div class="pure-g" style="margin-bottom: 3em;">
+          <div class="pure-u-1-1" style="text-align: center;"><small><i>Russian Academy of Sciences - IITP (Moscow, Russia)</i></small></div>
+          <div class="pure-u-1 pure-u-sm-1-2 logo">
+              <div style="width:200px;height:219px;background:url(assets/iitp.jpg) no-repeat 0px 95px; background-size: contain"></div>
+          </div>
+          <div class="pure-u-1 pure-u-sm-1-2 people">
+              <ul>
+                  <li>Egor Ershov</li>
+                  <li>Sergey Korchagin</li>
+                  <li>Artyom Panshin</li>
+                  <li>Arseniy Terekhin</li>
+                  <li>Ekaterina Zaychenkova</li>
+                  <li>Georgiy Lobarev</li>
+                  <li>Aleksei Khalin</li>
+                  <li>Vsevolod Plokhotnyuk</li>
+                  <li>Denis Abramov</li>
+                  <li>Elisey Zhdanov</li>
+                  <li>Sofia Dorogova</li>
+              </ul>
+          </div>
+      </div>
+
+      <div class="pure-g" style="margin-bottom: 3em;">
+          <div class="pure-u-1-1" style="text-align: center;"><small><i>Gideon Brothers (Croatia)</i></small></div>
+          <div class="pure-u-1 pure-u-sm-1-2 logo">
+              <div style="width:186px;height:81px;background:url(assets/organizers_opt.svg) no-repeat 0px -337px"></div>
+          </div>
+          <div class="pure-u-1 pure-u-sm-1-2 people">
+              <ul><li>Nikola Banić</li></ul>
+          </div>
+      </div>
+
+    <h2>Partner</h2>
+      
+      <div class="pure-g" style="margin-bottom: 3em;">
+          <div class="pure-u-1-1" style="text-align: center;"><small><i>University of Würzburg (Germany)</i></small></div>
+          <div class="pure-u-1 pure-u-sm-1-2 logo">
+              <div style="width:192px;height:85px;background:url(assets/organizers_opt.svg) no-repeat 0px -511px"></div>
+          </div>
+          <div class="pure-u-1 pure-u-sm-1-2 people">
+              <ul><li>Radu Timofte and Georgii Perevozchikov</li></ul>
+          </div>
+      </div>
+
+    <!--<h2>Sponsorship</h2>
+    <div style="text-align: center;">
+        ...
+    </div>-->
+
+    <hr>
+
+		<br>
+        <br>
+
+        <!--<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe4DOYsreCN8nTquRPVbTESogrqhsHvpb-Lj9lw4BP-TwmRAQ/viewform?embedded=true" width="640" height="890" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        -->
+        </p>
+    </div>
+<!-- code for slider -->
+<script>
+function $(selector){return document.querySelectorAll(selector);}
+document.addEventListener('DOMContentLoaded', function(){
+    var dragging = scrolling = resizing = false;
+    const imageComparisonContainers = $('.cd-image-container');
+    updateVisibility(imageComparisonContainers);
+
+    window.addEventListener('scroll', function(){
+        if( !scrolling) {
+            scrolling =  true;
+            requestAnimationFrame(function(){updateVisibility(imageComparisonContainers);});
+        }
+    });
+
+    //make the .cd-handle element draggable and modify .cd-resize-img width according to its position
+    imageComparisonContainers.forEach(function(actual){
+        makeDragable(
+            actual.querySelector('.cd-handle'),
+            actual.querySelector('.cd-resize-img'),
+            actual,
+            actual.querySelector('.cd-image-label[data-type="original"]'),
+            actual.querySelector('.cd-image-label[data-type="modified"]'));
+    });
+
+    //upadate images label visibility
+    window.addEventListener('resize', function(){
+        if( !resizing) {
+            resizing =  true;
+            requestAnimationFrame(function(){checkLabel(imageComparisonContainers);});
+        }
+    });
+
+    function updateVisibility(containers) {
+        containers.forEach(function(actualContainer){
+            if(document.scrollingElement.scrollTop + window.innerHeight * 0.5 > actualContainer.offsetTop) {
+                actualContainer.classList.add('is-visible');
+            }
+        });
+        scrolling = false;
+    }
+
+    function checkLabel(containers) {
+        containers.forEach(function(actual){
+            updateLabel(actual.querySelector('.cd-image-label[data-type="modified"]'), actual.querySelector('.cd-resize-img'), 'left');
+            updateLabel(actual.querySelector('.cd-image-label[data-type="original"]'), actual.querySelector('.cd-resize-img'), 'right');
+        });
+        resizing = false;
+    }
+    function makeDragable(dragElement, resizeElement, container, labelContainer, labelResizeElement) {
+        function onDown(e) {
+            dragElement.classList.add('draggable');
+            resizeElement.classList.add('resizable');
+            e.preventDefault();
+        }
+        dragElement.addEventListener("mousedown", onDown);
+        dragElement.addEventListener("touchstart", onDown);
+        function onMove(e) {
+            if( !dragging) {
+                dragging =  true;
+                requestAnimationFrame(function(){
+                    animateDraggedHandle(e, dragElement, this);
+                }.bind(dragElement.parentNode));
+            }
+        }
+        window.addEventListener("mousemove", onMove);
+        document.addEventListener("touchmove", onMove);
+        function onUp(e){
+            dragElement.classList.remove('draggable');
+            resizeElement.classList.remove('resizable');
+        }
+
+        dragElement.parentNode.addEventListener("mouseup", onUp);
+        window.addEventListener("mouseup", onUp);
+        window.addEventListener("touchend", onUp);
+        window.addEventListener("touchcancel", onUp);
+    }
+
+    function animateDraggedHandle(e, dragElement, container) {
+        const tt = e.targetTouches;
+        const x = tt && tt.length ? tt[0].pageX : e.pageX;
+        const leftEdge = container.offsetLeft;
+        const leftRight = leftEdge + container.clientWidth;
+        const widthValue = Math.max(0, Math.min(container.clientWidth - 0, x - leftEdge)) / container.clientWidth * 100 + '%';
+        const isDraggable = dragElement.classList.contains('draggable');
+        if (!isDraggable) {
+            dragging = false;
+            return;
+        }
+        dragElement.style.left = widthValue;
+        const resizeable = container.querySelector('.resizable');
+        resizeable.style.width = widthValue;
+
+        updateLabel(container.querySelector('.cd-image-label[data-type="modified"]'), container.querySelector('.cd-resize-img'), 'left');
+        updateLabel(container.querySelector('.cd-image-label[data-type="original"]'), container.querySelector('.cd-resize-img'), 'right');
+        dragging = false;
+    }
+
+    function updateLabel(label, resizeElement, position) {
+        if(position == 'left') {
+            ( label.offsetLeft + label.clientWidth < resizeElement.offsetLeft + resizeElement.clientWidth ) ? label.classList.remove('is-hidden') : label.classList.add('is-hidden') ;
+        } else {
+            ( label.offsetLeft > resizeElement.offsetLeft + resizeElement.clientWidth ) ? label.classList.remove('is-hidden') : label.classList.add('is-hidden') ;
+        }
+    }
+});
+</script>
+
+</body>
+</html>
