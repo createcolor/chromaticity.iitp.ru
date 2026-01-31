@@ -263,9 +263,95 @@
 
     <div class="content">
 
-		This webpage is for the upcoming Low-Light Enhancement: Twilight Cowboy Challenge. More information will be available after the NTIRE workshop announcement.
+		Welcome to the Low-Light Enhancement challenge, informally known as the "Twilight Cowboy" challenge. This competition is part of <a href="https://cvlai.net/ntire/2026/">the NTIRE workshop</a> at <a href="https://cvpr.thecvf.com/">CVPR 2026</a>. This competition continues the line of previous challenges that pose complex tasks of night photography rendering. This year specifically, the contestants are asked to develop an algorithm for joint alignment and denoising of both indoor and outdoor low-light scenes collected with human-hand tremor.
 
-		<h2>Organizer</h2>
+		<h2>Motivation and Goals of the Challenge</h2>
+      <p>
+        Nighttime image processing presents numerous challenges, primarily due to the presence of strong light sources within the scene and high levels of noise. One effective approach to mitigating these issues is multi-frame capture, which significantly reduces noise by combining multiple exposures. However, this technique introduces its own difficulties—handheld shooting inevitably involves slight hand movements, complicating the alignment and registration of frames.<br/>
+        <br/>
+        In this competition, participants are challenged to develop a method for transforming a set of unprocessed handheld RAW images into a denoised RAW image equivalent to one captured with a stationary camera. This task introduces several novel aspects that distinguish it from existing approaches in computational photography. It demands joint motion compensation and denoising directly in the Bayer/RAW domain — a significantly more complex inverse problem than conventional pipelines that operate on already demosaiced RGB frames or assume perfect alignment. By explicitly requiring robustness to natural human hand tremor the challenge bridges the gap between idealized laboratory conditions and practical mobile photography scenarios. These aspects position the challenge at the forefront of computational photography research, addressing a critical yet underexplored gap in bringing professional-grade low-light imaging capabilities to everyday handheld devices.
+      </p>
+
+
+		<h2>Timeline</h2>
+    <table style="border:1px solid #000000;border-collapse:collapse;" border="1">
+      <tbody>
+      <tr style="background-color:#dddddd;">
+      <th style="padding:5px;">Date</th>
+      <th style="padding:5px;">Event</th>
+      </tr>
+      <tr style="background-color:#ffffff;">
+      <td style="padding:5px;">January 30, 2026</td>
+      <td style="padding:5px;">Validation server online. Stage 1 of the competition begins.</td>
+      </tr>
+      <tr style="background-color:#dddddd;">
+      <td style="padding:5px;">February 20, 2026</td>
+      <td style="padding:5px;">Additional data is released for participants. Stage 2 of the competition begins.</td>
+      </tr>
+      <tr style="background-color:#ffffff;">
+      <td style="padding:5px;">March 10, 2026</td>
+      <td style="padding:5px;">Final Stage of the competition begins, validation server closed.</td>
+      </tr>
+      <tr style="background-color:#dddddd;">
+      <td style="padding:5px;">March 17, 2026</td>
+      <td style="padding:5px;">Final Stage submission deadline.</td>
+      </tr>
+      <tr style="background-color:#ffffff;">
+      <td style="padding:5px;">March 19, 2026</td>
+      <td style="padding:5px;">Preliminary test results release to participants.</td>
+      </tr>
+      <tr style="background-color:#dddddd;">
+      <td style="padding:5px;">March 24, 2026</td>
+      <td style="padding:5px;">Paper submission deadline for entries from the challenge.</td>
+      </tr>
+      </tbody>
+    </table>
+
+		<h2>Challenge Data</h2>
+      <p>
+        For each scene, participants will be provided with 5 RAW frames of the same static scene taken during handheld capture. These frames will feature natural misalignment. The task of the challenge is to produce a singular noise-free frame. This frame should be aligned with the <b>first</b> frame of the input sequence. The input sequence is encoded in separate .dng files, and the output should be encoded in a 16-bit grayscale .png file.<br/>
+        <br/>
+        During Stage 1 of the challenge, 200 samples will be made available as part of a training dataset, and additional 50 samples for validation. During Stage 2, additional data will be made available for participants to stimulate competitiveness and further research.<br/>
+        <br/>
+        All data for the competition is captured with OnePlus Ace 2 Pro smartphone main camera.
+      </p>
+
+		<h2>Participation</h2>
+      <p>
+        To participate, each team should fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSeAnOjXKc0nSjOuEPkgqBkNPWv0ceihwWgh1BJ83ra26c8frA/viewform?usp=dialog">this Registration form</a>. This is <b>required</b> for a team's final solution to be accepted during Final Stage.<br/>
+        <br/>
+        During Stages 1 and 2, participants are encouraged to submit the results of their algorithm on validation data with open inputs via the Codabench platform (link for our challenge will be made available very soon). This platform aows for automatic evaluation of your results and online leaderboards. Participation in these stages is <b>greatly encouraged but not required</b>.<br/>
+        <br/>
+        During the Final Stage, participants will have to submit their solutions organized in Docker containers so that we could run them locally on the test dataset. This is <b>required</b> for a team's final result to be valid. Teams will be evaluated and ranked based on their submission during the Final Stage.<br/>
+        <br/>
+        During all stages, solutions are scored by average PSNR and SSIM metrics across the validation data, with the final score of a team being calculated from their overall ranking in each of two metrics:<br/>
+        <center><i>Score = 0.6 &middot; PSNR_Rank + 0.4 &middot; SSIM_Rank</i></center><br/>
+        Participants are ranked by score, with lower scores indicating better performance.
+      </p>
+    
+    
+		<h2>Submission rules</h2>
+      <p>
+        During the solution submission, the participants will have the option to make their <b>Docker</b> container open, i.e., publicly available after the challenge. This will be a prerequisite to be eligible for receiving winner certificates should they win one of the first three places and if they wish to be included in the final report.<br/>
+        <br/>
+        It should be noted that only those solutions are allowed that use open components available to all participants in the competition (at the time of the start of the competition). <i>Proprietary solutions will be disqualified.</i><br/>
+        <br/>
+        One team is not allowed to make multiple accounts. If such a situation is detected, all accounts of the team can be disqualified.<br/>
+        <br/>
+        It is allowed to use additional training data if a team has access to it. However, it would later be fair to report the use of additional data in the solution description, even though it is not mandatory.
+      </p>
+
+		<h2>Reporting</h2>
+      <p>
+        In order to be eligible for the prizes, the participants will be required to send code and reports about their solutions in the form of short papers during the submission. If this report is not submitted, the participants that would otherwise win a prize will be passed over.
+      </p>
+
+		<h2>Q&amp;A</h2>
+      <p>
+        If you still have any questions, please send an email: <a href="mailto:nightphotochallenge@gmail.com">nightphotochallenge@gmail.com</a>.
+      </p>
+
+    <h2>Organizer</h2>
       <div class="pure-g" style="margin-bottom: 3em;">
         <div class="pure-u-1-1" style="text-align: center;"><small><i>AIRI Institute</i></small></div>
 
