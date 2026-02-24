@@ -268,6 +268,21 @@
 		<h2>News and updates</h2>
 
     <p>
+      <u><b>February 24, 2026</b></u>
+      <ul>
+          <li>Stage 2 begins!</li><br/>
+          <li>
+            Dear Participants,<br/><br/>
+            Today we mark the beginning of the Stage 2 of our competition. With it, we are releasing additional 150 training scenes and 50 validation scenes to stimulate further development of your solutions. You can access the new data via the links in the <a href="#challenge_data">Data</a> section of this page.<br/><br/>
+
+            Please note: the <code>val_input.zip</code> archive already contains <b>all 100 scenes required for validation in the second stage</b> (50 new ones and 50 from the previous stage). Your submission should contain 100 files in total. The training data is an additional 150 samples that you may combine with the previous data or use in however you see fit.<br/><br/>
+
+            Thank you for participating in our challenge and we await your improved solutions!
+          </li>
+      </ul>
+    </p>
+
+    <p>
       <u><b>February 10, 2026</b></u>
       <ul>
           <li>To ease your introduction into the competition as well as to stimulate improvement of the participants' solutions, we released the code we used to generate a baseline submission. The provided approach combines a pre-trained ASpanFormer for image alignment and BM3D for noise reduction. The code, along with the installation and usage guide, is available <a href="https://github.com/Zufarovich/TWILIGHT-COWBOY-CHALLENGE-BASELINE">on GitHub</a>.</li>
@@ -323,7 +338,7 @@
       </tbody>
     </table>
 
-		<h2>Challenge Data</h2>
+		<h2><a name="challenge_data">Challenge Data</a></h2>
       <p>
         For each scene, participants will be provided with 5 RAW frames of the same static scene taken during handheld capture. These frames will feature natural misalignment. The task of the challenge is to produce a singular noise-free frame. This frame should be aligned with the <b>first</b> frame of the input sequence. The input sequence is encoded in separate .dng files, and the output should be encoded in a 16-bit grayscale .png file.<br/>
         <br/>
